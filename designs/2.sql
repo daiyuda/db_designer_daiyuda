@@ -1,4 +1,5 @@
 -- QUERY 2
+/*
 select
 	s_acctbal,
 	s_name,
@@ -42,4 +43,19 @@ order by
 	n_name,
 	s_name,
 	p_partkey;
+*/
 
+CREATE TABLE mv_supplycost
+	SELECT 
+		ps_supplycost,
+		r_name,
+	FROM 
+		partsupp,
+		supplier,
+		nation,
+		region
+	where
+		p_partkey = ps_partkey
+		and s_suppkey = ps_suppkey
+		and s_nationkey = n_nationkey;
+		and n_regionkey = r_regionkey
