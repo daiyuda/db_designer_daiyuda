@@ -47,9 +47,18 @@ order by
 
 CREATE TABLE mv_supplycost
 	SELECT 
+		s_acctbal,
+		s_name,
+		n_name,
+		p_partkey,
+		p_mfgr,
+		s_address,
+		s_phone,
+		s_comment,
 		ps_supplycost,
 		r_name
 	FROM 
+		part,
 		partsupp,
 		supplier,
 		nation,
