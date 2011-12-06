@@ -13,3 +13,14 @@ sudo service mysqld restart
 mysql -u daiyuda -pdaiyuda tpch
 
 source ~/db_designer_daiyuda/queries/1.sql
+
+#pull all the updates
+git pull origin master
+
+
+#add files to be pushed
+git add queries/
+#add commit
+git commit -m 'some comments'
+#push
+git commit -m 'seperated queries'
