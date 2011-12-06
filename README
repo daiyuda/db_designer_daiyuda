@@ -1,3 +1,13 @@
 this is my cs 127 final project, Yuda
+
 ssh -i daiyuda.pem ec2-user@ec2-107-20-88-68.compute-1.amazonaws.com 
+
+#drop cached disk pages
+sudo su
+echo 3 > /proc/sys/vm/drop_caches
+exit
+
+#restar MySQL server
+sudo service mysqld restart
+
 mysql -u daiyuda -pdaiyuda tpch
