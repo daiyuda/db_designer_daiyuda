@@ -61,11 +61,6 @@ WHERE
 	AND p_type like '%BRASS'
 	AND r_name = 'EUROPE'
 	and ps_supplycost = MIN( ps_supplycost )
-ORDER BY
-	s_acctbal DESC,
-	n_name,
-	s_name,
-	p_partkey
 GROUP BY
 	s_acctbal,
 	s_name,
@@ -74,5 +69,10 @@ GROUP BY
 	p_mfgr,
 	s_address,
 	s_phone,
-	s_comment;
+	s_comment
+ORDER BY
+	s_acctbal DESC,
+	n_name,
+	s_name,
+	p_partkey;
 
