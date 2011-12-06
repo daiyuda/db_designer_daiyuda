@@ -1,6 +1,6 @@
---The SQL to create your design will go in this file
+-- The SQL to create your design will go in this file
 
---QUERY 1
+-- QUERY 1
 CREATE TABLE mv_lineitem
     SELECT 
         l_returnflag,
