@@ -12,6 +12,8 @@ sudo service mysqld restart
 
 mysql -u daiyuda -pdaiyuda tpch
 
+source ~/db_designer_daiyuda/design.sql
+
 source ~/db_designer_daiyuda/queries/1.sql
 
 #pull all the updates
