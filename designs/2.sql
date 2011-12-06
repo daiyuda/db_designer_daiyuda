@@ -48,7 +48,7 @@ order by
 CREATE TABLE mv_supplycost
 	SELECT 
 		ps_supplycost,
-		r_name,
+		r_name
 	FROM 
 		partsupp,
 		supplier,
