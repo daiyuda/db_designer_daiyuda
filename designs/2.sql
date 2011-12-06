@@ -54,8 +54,8 @@ CREATE TABLE mv_supplycost
 		supplier,
 		nation,
 		region
-	where
+	WHERE
 		p_partkey = ps_partkey
-		and s_suppkey = ps_suppkey
-		and s_nationkey = n_nationkey
-		and n_regionkey = r_regionkey;
+		AND s_suppkey = ps_suppkey
+		AND s_nationkey = n_nationkey
+		AND n_regionkey = r_regionkey;
