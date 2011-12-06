@@ -1,4 +1,5 @@
 -- QUERY 1
+/*
 select
 	l_returnflag,
 	l_linestatus,
@@ -20,4 +21,20 @@ group by
 order by
 	l_returnflag,
 	l_linestatus;
+*/
 
+select
+	l_returnflag,
+	l_linestatus,
+	sum_qty,
+	sum_base_price,
+	sum_base_price * (1 - l_discount) as sum_disc_price,
+	sum_base_price * (1 - l_discount) * (1 + l_tax) as sum_charge,
+	avg_qty,
+	avg_price,
+	avg_disc,
+	count_order
+from
+	mv_lineitem
+where
+	l_shipdate <= date '1998-12-01';
