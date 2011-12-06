@@ -51,7 +51,6 @@ CREATE TABLE mv_supplycost
 		s_acctbal,
 		s_name,
 		n_name,
-		p_mfgr,
 		s_address,
 		s_phone,
 		s_comment,
