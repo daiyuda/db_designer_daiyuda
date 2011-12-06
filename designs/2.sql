@@ -44,6 +44,7 @@ order by
 	s_name,
 	p_partkey;
 */
+DROP TABLE mv_supplycost IF EXISTS;
 
 CREATE TABLE mv_supplycost
 	SELECT 
@@ -56,6 +57,8 @@ CREATE TABLE mv_supplycost
 		s_phone,
 		s_comment,
 		ps_supplycost,
+		p_size,
+		p_type,
 		r_name
 	FROM 
 		part,
