@@ -6,6 +6,8 @@ CREATE TABLE mv_lineitem
         l_returnflag,
         l_linestatus,
         l_shipdate,
+        l_discount,
+        l_tax,
         sum(l_quantity) as sum_qty,
         sum(l_extendedprice) as sum_base_price,
         avg(l_quantity) as avg_qty,
