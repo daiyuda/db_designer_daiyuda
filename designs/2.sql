@@ -44,7 +44,7 @@ order by
 	s_name,
 	p_partkey;
 */
-DROP TABLE mv_supplycost IF EXISTS;
+DROP TABLE IF EXISTS mv_supplycost;
 
 CREATE TABLE mv_supplycost
 	SELECT 
