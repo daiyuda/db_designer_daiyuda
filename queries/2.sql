@@ -56,21 +56,25 @@ SELECT
 	s_comment
 FROM
 	mv_supplycost
+AS
+	s1
 WHERE
-	p_size = 15
-	AND p_type like '%BRASS'
-	AND r_name = 'EUROPE'
-	and ps_supplycost = (
+	s1.p_size = 15
+	AND s1.p_type like '%BRASS'
+	AND s1.r_name = 'EUROPE'
+	and s1.ps_supplycost = (
 		SELECT 
 			MIN( ps_supplycost)
 		FROM 
 			mv_supplycost
+		AS
+			s2
 		WHERE 
-			r_name = 'EUROPE'
+			s2.r_name = 'EUROPE'
 	)
 ORDER BY
-	s_acctbal DESC,
-	n_name,
-	s_name,
-	p_partkey;
+	s1.s_acctbal DESC,
+	s1.n_name,
+	s1.s_name,
+	s1.p_partkey;
 
