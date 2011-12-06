@@ -63,7 +63,8 @@ WHERE
 	and ps_supplycost = (
 		SELECT 
 			MIN( ps_supplycost)
-		FROM mv_supplycost
+		FROM 
+			mv_supplycost
 		WHERE 
 			r_name = 'EUROPE'
 	)
