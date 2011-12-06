@@ -55,11 +55,11 @@ SELECT
 	s_phone,
 	s_comment
 FROM
+	part,
 	mv_supplycost
-AS
-	s1
 WHERE
-	s1.p_size = 15
+	p_partkey = ps_partkey
+	AND s1.p_size = 15
 	AND s1.p_type like '%BRASS'
 	AND s1.r_name = 'EUROPE'
 	and s1.ps_supplycost = (
@@ -67,10 +67,9 @@ WHERE
 			MIN( ps_supplycost)
 		FROM 
 			mv_supplycost
-		AS
-			s2
 		WHERE 
-			s2.r_name = 'EUROPE'
+			p_partkey = ps_partkey
+			AND s2.r_name = 'EUROPE'
 	)
 ORDER BY
 	s1.s_acctbal DESC,
