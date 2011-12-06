@@ -1,4 +1,5 @@
 -- QUERY 2
+/*
 select
 	s_acctbal,
 	s_name,
@@ -39,6 +40,29 @@ where
 	)
 order by
 	s_acctbal desc,
+	n_name,
+	s_name,
+	p_partkey;
+*/
+
+SELECT
+	s_acctbal,
+	s_name,
+	n_name,
+	p_partkey,
+	p_mfgr,
+	s_address,
+	s_phone,
+	s_comment
+FROM
+	mv_supplycost
+WHERE
+	p_size = 15
+	AND p_type like '%BRASS'
+	AND r_name = 'EUROPE'
+	and ps_supplycost = MIN( ps_supplycost )
+ORDER BY
+	s_acctbal DESC,
 	n_name,
 	s_name,
 	p_partkey;
