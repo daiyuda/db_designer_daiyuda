@@ -66,6 +66,6 @@ CREATE TABLE mv_supplycost
 		nation,
 		region
 	WHERE
-		AND s_suppkey = ps_suppkey
+		s_suppkey = ps_suppkey
 		AND s_nationkey = n_nationkey
 		AND n_regionkey = r_regionkey;
