@@ -25,4 +25,4 @@ git add queries/
 #add commit
 git commit -m 'some comments'
 #push
-git commit -m 'seperated queries'
+git push origin master
