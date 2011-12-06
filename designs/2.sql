@@ -55,8 +55,6 @@ CREATE TABLE mv_supplycost
 		s_phone,
 		s_comment,
 		ps_supplycost,
-		p_size,
-		p_type,
 		r_name
 	FROM 
 		partsupp,
