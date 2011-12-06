@@ -61,13 +61,11 @@ CREATE TABLE mv_supplycost
 		p_type,
 		r_name
 	FROM 
-		part,
 		partsupp,
 		supplier,
 		nation,
 		region
 	WHERE
-		p_partkey = ps_partkey
 		AND s_suppkey = ps_suppkey
 		AND s_nationkey = n_nationkey
 		AND n_regionkey = r_regionkey;
