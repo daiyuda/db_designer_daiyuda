@@ -60,16 +60,13 @@ WHERE
 	p_size = 15
 	AND p_type like '%BRASS'
 	AND r_name = 'EUROPE'
-	and ps_supplycost = MIN( ps_supplycost )
-GROUP BY
-	s_acctbal,
-	s_name,
-	n_name,
-	p_partkey,
-	p_mfgr,
-	s_address,
-	s_phone,
-	s_comment
+	and ps_supplycost = (
+		SELECT 
+			MIN( ps_supplycost 
+		FROM mv_supplycost
+		WHERE 
+			r_name = 'EUROPE'
+	)
 ORDER BY
 	s_acctbal DESC,
 	n_name,
