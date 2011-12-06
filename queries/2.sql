@@ -65,5 +65,14 @@ ORDER BY
 	s_acctbal DESC,
 	n_name,
 	s_name,
-	p_partkey;
+	p_partkey
+GROUP BY
+	s_acctbal,
+	s_name,
+	n_name,
+	p_partkey,
+	p_mfgr,
+	s_address,
+	s_phone,
+	s_comment;
 
