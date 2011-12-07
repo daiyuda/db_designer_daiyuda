@@ -30,7 +30,7 @@ SELECT
 	o_orderdate,
 	o_shippriority
 FROM
-	mv_col
+	mv_3
 WHERE
 	c_mktsegment = 'BUILDING'
 	and o_orderdate < date '1995-03-15'
