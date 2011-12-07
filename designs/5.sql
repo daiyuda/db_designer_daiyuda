@@ -69,9 +69,7 @@ CREATE TABLE mv_5
 	group by
 		n_name,
 		r_name,
-		o_orderdate
-	order by
-		revenue desc;
+		o_orderdate;
 
 DROP INDEX name ON mv_5;
 CREATE INDEX name ON mv_5 ( r_name );
