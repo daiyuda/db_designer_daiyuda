@@ -1,4 +1,6 @@
 -- QUERY 12
+
+EXPLAIN(
 select
 	l_shipmode,
 	sum(case
@@ -26,4 +28,5 @@ where
 group by
 	l_shipmode
 order by
-	l_shipmode;
+	l_shipmode
+);
