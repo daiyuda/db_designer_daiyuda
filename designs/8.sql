@@ -41,14 +41,14 @@ order by
 
 DROP TABLE IF EXISTS mv_8;
 CREATE TABLE mv_8
-	select
-		extract(year from o_orderdate) as o_year,
-		SUM(l_extendedprice * (1 - l_discount)) as volume,
-		n2.n_name as nation,
+	SELECT
+		extract(year FROM o_orderdate) AS o_year,
+		SUM(l_extendedprice * (1 - l_discount)) AS volume,
+		n2.n_name AS nation,
 		r_name,
 		o_orderdate,
 		p_type
-	from
+	FROM
 		part,
 		supplier,
 		lineitem,
@@ -57,14 +57,14 @@ CREATE TABLE mv_8
 		nation n1,
 		nation n2,
 		region
-	where
+	WHERE
 		p_partkey = l_partkey
-		and s_suppkey = l_suppkey
-		and l_orderkey = o_orderkey
-		and o_custkey = c_custkey
-		and c_nationkey = n1.n_nationkey
-		and n1.n_regionkey = r_regionkey
-		and s_nationkey = n2.n_nationkey
+		AND s_suppkey = l_suppkey
+		AND l_orderkey = o_orderkey
+		AND o_custkey = c_custkey
+		AND c_nationkey = n1.n_nationkey
+		AND n1.n_regionkey = r_regionkey
+		AND s_nationkey = n2.n_nationkey
 	GROUP BY
 		o_year,
 		nation,
