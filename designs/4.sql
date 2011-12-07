@@ -34,4 +34,4 @@ CREATE TABLE mv_lineitem_query4
 	FROM
 		lineitem
 	WHERE 
-		and l_commitdate < l_receiptdate;
+		l_commitdate < l_receiptdate;
