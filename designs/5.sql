@@ -44,8 +44,6 @@ CREATE INDEX regionkey ON nation ( n_regionkey );
 DROP INDEX name ON region;
 CREATE INDEX name ON region ( r_name );
 
-DROP INDEX orderdate ON orders;
-CREATE INDEX orderdate ON orders ( o_orderdate );
 
 /*
 CREATE TABLE mv_5
