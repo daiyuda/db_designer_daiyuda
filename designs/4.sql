@@ -30,7 +30,7 @@ CREATE INDEX orderpriority ON orders ( o_orderpriority );
 DROP TABLE IF EXISTS mv_4;
 CREATE TABLE mv_4
 	SELECT
-		l_oderkey
+		l_orderkey
 	FROM
 		lineitem
 	WHERE
