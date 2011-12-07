@@ -1,5 +1,5 @@
 -- QUERY 3
-
+/*
 select
 	l_orderkey,
 	sum(l_extendedprice * (1 - l_discount)) as revenue,
@@ -23,8 +23,8 @@ order by
 	revenue desc,
 	o_orderdate;
 
-
-/*SELECT
+*/
+SELECT
 	l_orderkey,
 	revenue,
 	o_orderdate,
@@ -35,4 +35,3 @@ WHERE
 	c_mktsegment = 'BUILDING'
 	and o_orderdate < date '1995-03-15'
 	and l_shipdate > date '1995-03-15';
-*/
