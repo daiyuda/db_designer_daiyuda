@@ -49,4 +49,3 @@ CREATE INDEX suppkey ON partsupp(ps_suppkey);
 
 DROP INDEX nationkey ON supplier;
 CREATE INDEX nationkey ON supplier(s_nationkey);
-create index nationkey on supplier(s_nationkey);
