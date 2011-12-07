@@ -1,4 +1,5 @@
 -- QUERY 7
+explain(
 select
 	supp_nation,
 	cust_nation,
@@ -37,4 +38,4 @@ group by
 order by
 	supp_nation,
 	cust_nation,
-	l_year;
+	l_year);
