@@ -1,4 +1,5 @@
 -- QUERY 4
+/*
 select
 	o_orderpriority,
 	count(*) as order_count
@@ -20,4 +21,7 @@ group by
 	o_orderpriority
 order by
 	o_orderpriority;
+*/
 
+DROP INDEX orderpriority ON oders;
+CREATE INDEX orderpriority ON oders ( o_orderpriority );
