@@ -50,10 +50,3 @@ CREATE TABLE mv_col
 	ORDER BY
 		revenue DESC,
 		o_orderdate;
-/*
-CREATE INDEX mktsegment ON customer( c_mktsegment );
-CREATE INDEX orderdate ON orders( o_orderdate );
-CREATE INDEX shipdate ON lineitem( l_shipdate );
-*/
-
-CREATE INDEX col ON mv_col (c_mktsegment, o_orderdate, l_shipdate);
