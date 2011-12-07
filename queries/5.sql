@@ -12,7 +12,7 @@
 |  1 | SIMPLE      | supplier | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.lineitem.L_SUPPKEY   |       1 | Using where                                  |
 +----+-------------+----------+--------+---------------+---------+---------+---------------------------+---------+----------------------------------------------+
 */
-EXPLAIN(
+/*EXPLAIN(
 select
 	n_name,
 	sum(l_extendedprice * (1 - l_discount)) as revenue
@@ -63,3 +63,13 @@ group by
 	n_name
 order by
 	revenue desc;
+*/
+select
+	n_name,
+	revenue
+from
+	mv_5
+where
+	r_name = 'ASIA'
+	and o_orderdate >= date '1994-01-01'
+	and o_orderdate < date '1994-01-01' + interval '1' year;
