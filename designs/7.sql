@@ -68,6 +68,3 @@ CREATE INDEX supp_nation ON mv_7 (supp_nation);
 
 DROP INDEX cust_nation ON mv_7;
 CREATE INDEX cust_nation ON mv_7 (cust_nation);
-
-DROP INDEX shipdate ON mv_7;
-CREATE INDEX shipdate ON mv_7 (l_shipdate);
