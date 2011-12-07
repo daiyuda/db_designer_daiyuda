@@ -25,7 +25,7 @@ order by
 /*
 select
 	o_orderpriority,
-	count(*) as order_count
+	sum(order_count) as order_count
 from
 	orders
 where
