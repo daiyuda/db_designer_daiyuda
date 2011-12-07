@@ -29,7 +29,8 @@ order by
 	value desc;
 */
 
-DROP TABLE IF EXISTS mv_11
+DROP TABLE IF EXISTS mv_11;
+CREATE TABLE mv_11
 	select
 		sum(ps_supplycost * ps_availqty) * 0.0001000000 as total,
 		n_name
