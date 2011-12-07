@@ -1,5 +1,5 @@
 -- QUERY 2
-/*
+
 select
 	s_acctbal,
 	s_name,
@@ -43,8 +43,7 @@ order by
 	n_name,
 	s_name,
 	p_partkey;
-*/
-
+/*
 SELECT
 	s_acctbal,
 	s_name,
@@ -79,4 +78,4 @@ ORDER BY
 	n_name,
 	s_name,
 	p_partkey;
-
+*/
