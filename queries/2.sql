@@ -43,7 +43,7 @@ order by
 	n_name,
 	s_name,
 	p_partkey);
-/*
+
 select
 	s_acctbal,
 	s_name,
@@ -87,4 +87,3 @@ order by
 	n_name,
 	s_name,
 	p_partkey;
-*/
