@@ -31,16 +31,16 @@ order by
 
 DROP TABLE IF EXISTS mv_11;
 CREATE TABLE mv_11
-	select
-		sum(ps_supplycost * ps_availqty) * 0.0001000000 as total,
+	SELECT
+		SUM(ps_supplycost * ps_availqty) * 0.0001000000 AS total,
 		n_name
-	from
+	FROM
 		partsupp,
 		supplier,
 		nation
-	where
+	WHERE
 		ps_suppkey = s_suppkey
-		and s_nationkey = n_nationkey
+		AND s_nationkey = n_nationkey
 	GROUP BY
 		n_name;
 
