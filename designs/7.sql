@@ -47,7 +47,7 @@ CREATE TABLE mv_7
 		n1.n_name as supp_nation,
 		n2.n_name as cust_nation,
 		extract(year from l_shipdate) as l_year,
-		l_extendedprice * (1 - l_discount) as volume,
+		SUM(l_extendedprice * (1 - l_discount)) as volume,
 		l_shipdate
 	from
 		supplier,
@@ -61,7 +61,12 @@ CREATE TABLE mv_7
 		and o_orderkey = l_orderkey
 		and c_custkey = o_custkey
 		and s_nationkey = n1.n_nationkey
-		and c_nationkey = n2.n_nationkey;
+		and c_nationkey = n2.n_nationkey
+	GROUP BY
+		supp_nation,	
+		cust_nation,
+		l_year,
+		l_shipdate;
 
 DROP INDEX supp_nation ON mv_7;
 CREATE INDEX supp_nation ON mv_7 (supp_nation);
