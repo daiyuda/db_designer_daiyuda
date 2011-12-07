@@ -63,5 +63,9 @@ CREATE TABLE mv_supplycost
 	GROUP BY
 		r_name;
 */
-
+/*
+DROP INDEX min_supply ON partsupp;
 CREATE INDEX min_supply ON partsupp( ps_supplycost );
+*/
+DROP INDEX size ON part;
+CREATE INDEX size ON part( p_size );
