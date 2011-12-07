@@ -35,10 +35,10 @@ order by
 
 DROP TABLE IF EXISTS mv_10;
 CREATE TABLE mv_10
-	select
+	SELECT
 		c_custkey,
 		c_name,
-		sum(l_extendedprice * (1 - l_discount)) as revenue,
+		SUM(l_extendedprice * (1 - l_discount)) AS revenue,
 		c_acctbal,
 		n_name,
 		c_address,
@@ -46,16 +46,16 @@ CREATE TABLE mv_10
 		c_comment,
 		o_orderdate,
 		l_returnflag
-	from
+	FROM
 		customer,
 		orders,
 		lineitem,
 		nation
-	where
+	WHERE
 		c_custkey = o_custkey
-		and l_orderkey = o_orderkey
-		and c_nationkey = n_nationkey
-	group by
+		AND l_orderkey = o_orderkey
+		AND c_nationkey = n_nationkey
+	GROUP BY
 		c_custkey,
 		c_name,
 		c_acctbal,
@@ -65,3 +65,6 @@ CREATE TABLE mv_10
 		c_comment,
 		o_orderdate,
 		l_returnflag;
+
+DROP INDEX orderdate ON mv10;
+CREATE INDEX orderdate ON mv10 (o_orderdate);
