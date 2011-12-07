@@ -48,14 +48,8 @@ DROP TABLE IF EXISTS mv_supplycost;
 
 CREATE TABLE mv_supplycost
 	SELECT 
-		s_acctbal,
-		s_name,
-		n_name,
-		s_address,
-		s_phone,
-		s_comment,
-		ps_supplycost,
-		ps_partkey,
+		ps_suppkey,
+		MIN(ps_supplycost) as supplycost),
 		r_name
 	FROM 
 		partsupp,
@@ -65,4 +59,6 @@ CREATE TABLE mv_supplycost
 	WHERE
 		s_suppkey = ps_suppkey
 		AND s_nationkey = n_nationkey
-		AND n_regionkey = r_regionkey;
+		AND n_regionkey = r_regionkey
+	GROUP BY
+		r_name;
