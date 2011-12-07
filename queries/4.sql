@@ -36,6 +36,8 @@ where
 			*
 		from
 			mv_lineitem_query4
+		where
+			l_orderkey = o_orderkey
 	)
 group by
 	o_orderpriority
