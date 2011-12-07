@@ -33,5 +33,5 @@ order by
 	revenue desc;
 */
 
-DROP INDEX IF EXISTS custkey ON orders;
+DROP INDEX custkey ON orders;
 CREATE INDEX custkey ON orders (o_custkey);
