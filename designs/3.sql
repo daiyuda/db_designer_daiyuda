@@ -23,9 +23,9 @@ order by
 	revenue desc,
 	o_orderdate;
 */
-DROP TABLE IF EXISTS mv_col;
 
-CREATE TABLE mv_col 
+DROP TABLE IF EXISTS mv_3;
+CREATE TABLE mv_3 
 	SELECT 
 		l_orderkey,
 		sum(l_extendedprice * (1 - l_discount)) as revenue,
