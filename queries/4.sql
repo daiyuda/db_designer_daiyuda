@@ -22,33 +22,23 @@ group by
 order by
 	o_orderpriority;
 */
-SELECT
+select
 	o_orderpriority,
-	COUNT(*) AS order_count
-FROM
-	(
-		SELECT 
+	count(*) as order_count
+from
+	orders
+where
+	o_orderdate >= date '1993-07-01'
+	and o_orderdate < date '1993-07-01' + interval '3' month
+	and exists (
+		select
 			*
-		FROM 
-			orders
-		WHERE
-			o_orderdate >= date '1993-07-01'
-			and o_orderdate < date '1993-07-01' + interval '3' month
+		from
+			mv_4
+		where
+			l_orderkey = o_orderkey
 	)
-		AS o,
-	(
-		SELECT 
-			* 
-		FROM
-			lineitem
-		WHERE
-			l_commitdate < l_receiptdate	
-	)
-		AS l
-WHERE
-	o.o_orderkey = l.l_orderkey
 group by
 	o_orderpriority
 order by
 	o_orderpriority;
-
