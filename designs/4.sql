@@ -39,4 +39,4 @@ CREATE TABLE mv_4
 ALTER TABLE mv_4
 ADD PRIMARY KEY (l_orderkey);
 */
-CREATE INDEX mmmm ON mv (l_orderkey);
+CREATE INDEX mmmm ON mv_4 (l_orderkey);
