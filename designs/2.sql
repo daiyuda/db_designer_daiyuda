@@ -72,3 +72,6 @@ CREATE INDEX size ON part( p_size );
 
 DROP INDEX name ON region;
 CREATE INDEX name ON region( r_name );
+
+DROP INDEX regionkey ON nation;
+CREATE INDEX regionkey ON nation( n_regionkey );
