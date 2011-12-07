@@ -71,3 +71,9 @@ CREATE TABLE mv_8
 		r_name,
 		o_orderdate,
 		p_type;
+
+DROP INDEX name ON mv_8;
+CREATE INDEX name ON mv_8 ( r_name );
+
+DROP INDEX p_type ON mv_8;
+CREATE INDEX p_type ON mv_8 ( p_type );
