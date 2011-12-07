@@ -47,7 +47,7 @@ CREATE TABLE mv_7
 		n1.n_name as supp_nation,
 		n2.n_name as cust_nation,
 		extract(year from l_shipdate) as l_year,
-		l_extendedprice * (1 - l_discount) as volume.
+		l_extendedprice * (1 - l_discount) as volume,
 		l_shipdate
 	from
 		supplier,
