@@ -1,5 +1,5 @@
 -- QUERY 7
-explain(
+/*
 select
 	supp_nation,
 	cust_nation,
@@ -38,4 +38,25 @@ group by
 order by
 	supp_nation,
 	cust_nation,
-	l_year);
+	l_year;
+*/
+select
+	supp_nation,
+	cust_nation,
+	l_year,
+	sum(volume) as revenue
+FROM 
+	mv_7
+WHERE
+	((n1.n_name = 'FRANCE' and n2.n_name = 'GERMANY')
+		or (n1.n_name = 'GERMANY' and n2.n_name = 'FRANCE')	
+	)
+	and l_shipdate between date '1995-01-01' and date '1996-12-31'
+group by
+	supp_nation,
+	cust_nation,
+	l_year
+order by
+	supp_nation,
+	cust_nation,
+	l_year;
