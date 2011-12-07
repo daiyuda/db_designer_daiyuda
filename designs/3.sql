@@ -31,7 +31,6 @@ CREATE TABLE mv_col
 		o_orderdate,
 		o_shippriority,
 		c_mktsegment,
-		o_orderdate,
 		l_shipdate
 	FROM
 		customer,
