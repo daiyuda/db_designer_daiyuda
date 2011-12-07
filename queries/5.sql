@@ -64,32 +64,32 @@ group by
 order by
 	revenue desc;
 */
-explain(
-select
-	n_name,
-	sum(revenue) as revenue
-from
-	mv_5
-where
-	r_name = 'ASIA'
-	and o_orderdate >= date '1994-01-01'
-	and o_orderdate < date '1994-01-01' + interval '1' year
-group by 
-	n_name
-order by
-	revenue desc
+EXPLAIN(
+	SELECT
+		n_name,
+		SUM(revenue) AS revenue
+	FROM
+		mv_5
+	WHERE
+		r_name = 'ASIA'
+		AND o_orderdate >= date '1994-01-01'
+		AND o_orderdate < date '1994-01-01' + interval '1' year
+	GROUP BY
+		n_name
+	ORDER BY
+		revenue DESC
 );
 
-select
+SELECT
 	n_name,
-	sum(revenue) as revenue
-from
+	SUM(revenue) AS revenue
+FROM
 	mv_5
-where
+WHERE
 	r_name = 'ASIA'
-	and o_orderdate >= date '1994-01-01'
-	and o_orderdate < date '1994-01-01' + interval '1' year
-group by 
+	AND o_orderdate >= date '1994-01-01'
+	AND o_orderdate < date '1994-01-01' + interval '1' year
+GROUP BY
 	n_name
-order by
-	revenue desc;
+ORDER BY
+	revenue DESC;
