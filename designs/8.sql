@@ -44,7 +44,10 @@ CREATE TABLE mv_8
 	select
 		extract(year from o_orderdate) as o_year,
 		l_extendedprice * (1 - l_discount) as volume,
-		n2.n_name as nation
+		n2.n_name as nation,
+		r_name,
+		o_orderdate,
+		p_type
 	from
 		part,
 		supplier,
@@ -53,10 +56,7 @@ CREATE TABLE mv_8
 		customer,
 		nation n1,
 		nation n2,
-		region,
-		r_name,
-		o_orderdate,
-		p_type
+		region,	
 	where
 		p_partkey = l_partkey
 		and s_suppkey = l_suppkey
