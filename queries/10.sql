@@ -1,4 +1,5 @@
 -- QUERY 10
+EXPLAIN(
 select
 	c_custkey,
 	c_name,
@@ -29,4 +30,4 @@ group by
 	c_address,
 	c_comment
 order by
-	revenue desc;
+	revenue desc);
