@@ -1,5 +1,5 @@
 -- QUERY 2
-
+/*
 select
 	s_acctbal,
 	s_name,
@@ -42,7 +42,7 @@ order by
 	s_acctbal desc,
 	n_name,
 	s_name,
-	p_partkey;
+*/
 /*
 DROP TABLE IF EXISTS mv_supplycost;
 
@@ -63,3 +63,5 @@ CREATE TABLE mv_supplycost
 	GROUP BY
 		r_name;
 */
+
+CREATE INDEX min_supply ON partsupp( ps_supplycost );
