@@ -25,7 +25,7 @@ order by
 /*
 select
 	o_orderpriority,
-	sum(order_count) as order_count
+	count(*) as order_count
 from
 	orders
 where
@@ -47,7 +47,7 @@ order by
 explain(
 select
 	o_orderpriority,
-	count(*) as order_count
+	sum(order_count) as order_count
 from
 	mv_4
 where
@@ -60,7 +60,7 @@ order by
 
 select
 	o_orderpriority,
-	count(*) as order_count
+	sum(order_count) as order_count
 from
 	mv_4
 where
