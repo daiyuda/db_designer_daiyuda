@@ -35,6 +35,6 @@ select
 	avg_disc,
 	count_order
 from
-	mv_lineitem
+	mv_1
 where
 	l_shipdate <= date '1998-12-01';
