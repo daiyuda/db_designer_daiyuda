@@ -52,3 +52,5 @@ CREATE TABLE mv_col
 		o_orderdate;
 */
 CREATE INDEX mktsegment ON customer( c_mktsegment );
+CREATE INDEX orderdate ON orders( o_orderdate );
+CREATE INDEX shipdate ON lineitem( l_shipdate );
