@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS mv_supplycost;
 CREATE TABLE mv_supplycost
 	SELECT 
 		ps_suppkey,
-		MIN(ps_supplycost) as supplycost),
+		MIN(ps_supplycost) as supplycost,
 		r_name
 	FROM 
 		partsupp,
