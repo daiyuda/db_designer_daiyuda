@@ -52,4 +52,4 @@ CREATE TABLE mv_3
 		o_orderdate;
 
 DROP INDEX mktsegment ON mv_3;
-CREATE INDEX mktsegment ON MV_3 ( c_mktsegment );
+CREATE INDEX mktsegment ON mv_3 ( c_mktsegment );
