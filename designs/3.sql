@@ -24,7 +24,7 @@ order by
 	o_orderdate;
 */
 DROP TABLE IF EXISTS mv_col;
-/*
+
 CREATE TABLE mv_col 
 	SELECT 
 		l_orderkey,
@@ -50,7 +50,7 @@ CREATE TABLE mv_col
 	ORDER BY
 		revenue DESC,
 		o_orderdate;
-*/
+
 CREATE INDEX mktsegment ON customer( c_mktsegment );
 CREATE INDEX orderdate ON orders( o_orderdate );
 CREATE INDEX shipdate ON lineitem( l_shipdate );
