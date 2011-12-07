@@ -35,7 +35,8 @@ where
 		select
 			*
 		from
-			mv_lineitem_query4
+			lineitem
 		where
 			l_orderkey = o_orderkey
+			and l_commitdate < l_receiptdate
 	);
