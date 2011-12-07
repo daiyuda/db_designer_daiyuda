@@ -23,5 +23,5 @@ order by
 	o_orderpriority;
 */
 
-DROP INDEX orderpriority ON oders;
-CREATE INDEX orderpriority ON oders ( o_orderpriority );
+DROP INDEX orderpriority ON orders;
+CREATE INDEX orderpriority ON orders ( o_orderpriority );
