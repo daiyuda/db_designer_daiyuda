@@ -27,18 +27,5 @@ DROP INDEX orderpriority ON orders;
 CREATE INDEX orderpriority ON orders ( o_orderpriority );
 */
 
-DROP TABLE IF EXISTS mv_order_4;
-CREATE TABLE mv_order_4
-	SELECT 
-		o_orderpriority,
-		o_orderdate,
-		count(*) as order_count,
-		o_orderkey
-	FROM
-		orders
-	GROUP BY
-		o_orderpriority,
-		o_orderdate,
-		o_orderkey
-	ORDER BY
-		o_orderpriority;
+DROP INDEX orderdate ON orders;
+CREATE INDEX orderdate ON orders ( o_orderdate );
