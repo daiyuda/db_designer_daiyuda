@@ -34,49 +34,49 @@ order by
 	revenue desc);
 */
 explain(
-select
-	c_custkey,
-	c_name,
-	sum(revenue) as revenue,
-	c_acctbal,
-	n_name,
-	c_address,
-	c_phone,
-	c_comment
-from
-	mv_10
-where
-	o_orderdate >= date '1993-10-01'
-	and o_orderdate < date '1993-10-01' + interval '3' month
-	and l_returnflag = 'R'
-group by
-	c_custkey,
-	c_name,
-	c_acctbal,
-	c_phone,
-	n_name,
-	c_address,
-	c_comment
-order by
-	revenue desc
+	SELECT
+		c_custkey,
+		c_name,
+		SUM(revenue) AS revenue,
+		c_acctbal,
+		n_name,
+		c_address,
+		c_phone,
+		c_comment
+	FROM
+		mv_10
+	WHERE
+		o_orderdate >= date '1993-10-01'
+		AND o_orderdate < date '1993-10-01' + interval '3' month
+		AND l_returnflag = 'R'
+	GROUP BY
+		c_custkey,
+		c_name,
+		c_acctbal,
+		c_phone,
+		n_name,
+		c_address,
+		c_comment
+	ORDER BY
+		revenue DESC
 );
-/*
-select
+
+SELECT
 	c_custkey,
 	c_name,
-	sum(revenue) as revenue,
+	SUM(revenue) AS revenue,
 	c_acctbal,
 	n_name,
 	c_address,
 	c_phone,
 	c_comment
-from
+FROM
 	mv_10
-where
+WHERE
 	o_orderdate >= date '1993-10-01'
-	and o_orderdate < date '1993-10-01' + interval '3' month
-	and l_returnflag = 'R'
-group by
+	AND o_orderdate < date '1993-10-01' + interval '3' month
+	AND l_returnflag = 'R'
+GROUP BY
 	c_custkey,
 	c_name,
 	c_acctbal,
@@ -84,6 +84,5 @@ group by
 	n_name,
 	c_address,
 	c_comment
-order by
-	revenue desc;
-*/
+ORDER BY
+	revenue DESC;
