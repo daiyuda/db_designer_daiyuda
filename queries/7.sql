@@ -53,45 +53,45 @@ order by
 	cust_nation,
 	l_year;
 */
-explain(
-select
+EXPLAIN(
+SELECT
 	supp_nation,
 	cust_nation,
 	l_year,
-	sum(volume) as revenue
+	SUM(volume) AS revenue
 FROM 
 	mv_7
 WHERE
 	((supp_nation = 'FRANCE' and cust_nation = 'GERMANY')
-		or (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
+		OR (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
 	)
-	and l_shipdate between date '1995-01-01' and date '1996-12-31'
-group by
+	AND l_shipdate between date '1995-01-01' and date '1996-12-31'
+GROUP BY
 	supp_nation,
 	cust_nation,
 	l_year
-order by
+ORDER BY
 	supp_nation,
 	cust_nation,
 	l_year);
 
-select
+SELECT
 	supp_nation,
 	cust_nation,
 	l_year,
-	sum(volume) as revenue
+	SUM(volume) AS revenue
 FROM 
 	mv_7
 WHERE
 	((supp_nation = 'FRANCE' and cust_nation = 'GERMANY')
-		or (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
+		OR (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
 	)
-	and l_shipdate between date '1995-01-01' and date '1996-12-31'
-group by
+	AND l_shipdate between date '1995-01-01' and date '1996-12-31'
+GROUP BY
 	supp_nation,
 	cust_nation,
 	l_year
-order by
+ORDER BY
 	supp_nation,
 	cust_nation,
 	l_year;
