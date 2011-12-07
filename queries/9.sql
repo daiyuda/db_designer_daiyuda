@@ -62,7 +62,7 @@ group by
 order by
 	nation,
 	o_year desc);
-
+/*
 select
 	nation,
 	o_year,
@@ -76,4 +76,5 @@ group by
 	o_year
 order by
 	nation,
-	o_year desc
+	o_year desc;
+*/
