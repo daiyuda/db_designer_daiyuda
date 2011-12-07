@@ -27,5 +27,11 @@ DROP INDEX orderpriority ON orders;
 CREATE INDEX orderpriority ON orders ( o_orderpriority );
 */
 
-DROP INDEX orderdate ON orders;
-CREATE INDEX orderdate ON orders ( o_orderdate );
+DROP TABLE IF EXISTS mv_4;
+CREATE TABLE mv_4
+	SELECT
+		l_oderkey
+	FROM
+		lineitem
+	WHERE
+		l_commitdate < l_receiptdate;
