@@ -25,25 +25,6 @@ group by
 order by
 	revenue desc;
 */
-/*
-DROP INDEX custkey ON orders;
-CREATE INDEX custkey ON orders ( o_custkey );
-
-DROP INDEX orderkey ON lineitem;
--- CREATE INDEX orderkey ON lineitem ( l_orderkey );
-
-DROP INDEX nationkey ON customer;
-CREATE INDEX nationkey ON customer ( c_nationkey );
-
-DROP INDEX nationkey ON supplier;
--- CREATE INDEX nationkey ON supplier ( s_nationkey );
-
-DROP INDEX regionkey ON nation;
-CREATE INDEX regionkey ON nation ( n_regionkey );
-
-DROP INDEX name ON region;
-CREATE INDEX name ON region ( r_name );
-*/
 
 DROP TABLE IF EXISTS mv_5;
 CREATE TABLE mv_5
