@@ -56,7 +56,7 @@ CREATE TABLE mv_8
 		customer,
 		nation n1,
 		nation n2,
-		region,	
+		region
 	where
 		p_partkey = l_partkey
 		and s_suppkey = l_suppkey
