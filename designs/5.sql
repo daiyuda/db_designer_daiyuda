@@ -72,3 +72,6 @@ CREATE TABLE mv_5
 		o_orderdate
 	order by
 		revenue desc;
+
+DROP INDEX name ON mv_5;
+CREATE INDEX name ON mv_5 ( r_name );
