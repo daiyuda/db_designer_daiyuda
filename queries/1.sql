@@ -23,18 +23,18 @@ order by
 	l_linestatus;
 */
 
-select
+SELECT
 	l_returnflag,
 	l_linestatus,
 	sum_qty,
 	sum_base_price,
-	sum_base_price * (1 - l_discount) as sum_disc_price,
-	sum_base_price * (1 - l_discount) * (1 + l_tax) as sum_charge,
+	sum_base_price * (1 - l_discount) AS sum_disc_price,
+	sum_base_price * (1 - l_discount) * (1 + l_tax) AS sum_charge,
 	avg_qty,
 	avg_price,
 	avg_disc,
 	count_order
-from
+FROM
 	mv_1
-where
+WHERE
 	l_shipdate <= date '1998-12-01';
