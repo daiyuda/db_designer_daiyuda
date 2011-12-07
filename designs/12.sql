@@ -1,4 +1,5 @@
 -- QUERY 12
+/*
 select
 	l_shipmode,
 	sum(case
@@ -27,3 +28,21 @@ group by
 	l_shipmode
 order by
 	l_shipmode;
+*/
+
+DROP TABLE IF EXISTS mv_12;
+CREATE TABLE mv_12
+	SELECT
+		l_shipmode,
+		SUM(o_orderpriority) AS total,
+		l_receiptdate
+	FROM
+		orders,
+		lineitem
+	WHERE
+		o_orderkey = l_orderkey,
+		and l_commitdate < l_receiptdate
+		and l_shipdate < l_commitdate
+	group by
+		l_shipmode,
+		l_receiptdate;
