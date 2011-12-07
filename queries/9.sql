@@ -47,34 +47,34 @@ order by
 	nation,
 	o_year desc);
 */
-explain(
-select
+EXPLAIN(
+	SELECT
+		nation,
+		o_year,
+		SUM(amount) AS sum_profit
+	FROM
+		mv_9
+	WHERE
+		p_name like '%green%'
+	GROUP BY
+		nation,
+		o_year
+	ORDER BY
+		nation,
+		o_year DESC
+);
+
+SELECT
 	nation,
 	o_year,
-	sum(amount) as sum_profit
-from
+	SUM(amount) AS sum_profit
+FROM
 	mv_9
 WHERE
 	p_name like '%green%'
-group by
+GROUP BY
 	nation,
 	o_year
-order by
+ORDER BY
 	nation,
-	o_year desc);
-/*
-select
-	nation,
-	o_year,
-	sum(amount) as sum_profit
-from
-	mv_9
-WHERE
-	p_name like '%green%'
-group by
-	nation,
-	o_year
-order by
-	nation,
-	o_year desc;
-*/
+	o_year DESC;
