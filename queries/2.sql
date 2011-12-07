@@ -56,7 +56,10 @@ SELECT
 	s_comment
 FROM
 	part,
-	mv_supplycost
+	supplier,
+	partsupp,
+	nation,
+	region
 WHERE
 	p_partkey = ps_partkey
 	AND p_size = 15
@@ -64,7 +67,7 @@ WHERE
 	AND r_name = 'EUROPE'
 	and ps_supplycost = (
 		SELECT 
-			MIN( ps_supplycost)
+			min_supplycost
 		FROM 
 			mv_supplycost
 		WHERE 
