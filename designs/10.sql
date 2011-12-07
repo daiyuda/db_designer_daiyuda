@@ -1,4 +1,5 @@
 -- QUERY 10
+/*
 select
 	c_custkey,
 	c_name,
@@ -30,3 +31,7 @@ group by
 	c_comment
 order by
 	revenue desc;
+*/
+
+DROP INDEX IF EXISTS custkey ON orders;
+CREATE INDEX custkey ON orders (o_custkey);
