@@ -27,14 +27,13 @@ order by
 */
 
 DROP INDEX custkey ON orders;
--- CREATE INDEX custkey ON orders ( o_custkey );
-ALTER TABLE orders ADD CONSTRAINT fk_customer FOREIGN KEY (o_custkey) REFERENCES customers (c_custkey);
+CREATE INDEX custkey ON orders ( o_custkey );
 
 DROP INDEX orderkey ON lineitem;
 --CREATE INDEX orderkey ON lineitem ( l_orderkey );
 
 DROP INDEX nationkey ON customer;
--- CREATE INDEX nationkey ON customer ( c_nationkey );
+CREATE INDEX nationkey ON customer ( c_nationkey );
 
 DROP INDEX nationkey ON supplier;
 -- CREATE INDEX nationkey ON supplier ( s_nationkey );
