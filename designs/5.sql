@@ -31,7 +31,7 @@ CREATE INDEX custkey ON orders ( o_custkey );
 
 
 DROP INDEX orderkey ON lineitem;
--- CREATE INDEX orderkey ON lineitem ( l_orderkey );
+CREATE INDEX orderkey ON lineitem ( l_orderkey );
 
 DROP INDEX nationkey ON customer;
 -- CREATE INDEX nationkey ON customer ( c_nationkey );
