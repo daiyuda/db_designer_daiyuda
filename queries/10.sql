@@ -60,7 +60,7 @@ group by
 order by
 	revenue desc
 );
-
+/*
 select
 	c_custkey,
 	c_name,
@@ -86,3 +86,4 @@ group by
 	c_comment
 order by
 	revenue desc;
+*/
