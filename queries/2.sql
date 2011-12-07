@@ -67,7 +67,7 @@ WHERE
 	AND r_name = 'EUROPE'
 	and ps_supplycost = (
 		SELECT 
-			min_supplycost
+			supplycost
 		FROM 
 			mv_supplycost
 		WHERE 
