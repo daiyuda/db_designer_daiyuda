@@ -1,4 +1,5 @@
 -- QUERY 11
+/*
 select
 	ps_partkey,
 	sum(ps_supplycost * ps_availqty) as value
@@ -26,3 +27,4 @@ group by
 		)
 order by
 	value desc;
+*/
