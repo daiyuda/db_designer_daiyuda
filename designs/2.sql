@@ -1,5 +1,5 @@
 -- QUERY 2
-/*
+
 select
 	s_acctbal,
 	s_name,
@@ -43,7 +43,7 @@ order by
 	n_name,
 	s_name,
 	p_partkey;
-*/
+/*
 DROP TABLE IF EXISTS mv_supplycost;
 
 CREATE TABLE mv_supplycost
@@ -62,3 +62,4 @@ CREATE TABLE mv_supplycost
 		AND n_regionkey = r_regionkey
 	GROUP BY
 		r_name;
+*/
