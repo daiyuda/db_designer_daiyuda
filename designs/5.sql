@@ -1,4 +1,5 @@
 -- QUERY 5
+/*
 select
 	n_name,
 	sum(l_extendedprice * (1 - l_discount)) as revenue
@@ -23,3 +24,24 @@ group by
 	n_name
 order by
 	revenue desc;
+*/
+
+DROP INDEX custkey ON orders;
+CREATE INDEX custkey ON orders ( o_custkey );
+
+DROP INDEX orderkey ON lineitem;
+CREATE INDEX orderkey ON lineitem ( l_orderkey );
+
+DROP INDEX nationkey ON customer;
+CREATE INDEX nationkey ON customer ( c_nationkey );
+
+DROP INDEX nationkey ON supplier;
+CREATE INDEX nationkey ON supplier ( s_nationkey );
+
+DROP INDEX regionkey ON nation;
+CREATE INDEX regionkey ON nation ( n_regionkey );
+
+/*
+CREATE TABLE mv_5
+	SELECT 
+*/
