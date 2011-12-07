@@ -22,6 +22,17 @@ group by
 order by
 	o_orderpriority;
 */
-
+/*
 DROP INDEX orderpriority ON orders;
 CREATE INDEX orderpriority ON orders ( o_orderpriority );
+*/
+
+DROP TABLE IF EXISTS mv_lineitem_query4;
+CREATE TABLE mv_lineitem_query4
+	SELECT 
+		* 
+	FROM
+		lineitem
+	WHERE 
+		l_orderkey = o_orderkey
+		and l_commitdate < l_receiptdate;
