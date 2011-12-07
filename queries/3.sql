@@ -37,7 +37,7 @@ EXPLAIN(
 		AND o_orderdate < date '1995-03-15'
 		AND l_shipdate > date '1995-03-15'
 );
-/*
+
 SELECT
 	l_orderkey,
 	revenue,
@@ -49,4 +49,3 @@ WHERE
 	c_mktsegment = 'BUILDING'
 	AND o_orderdate < date '1995-03-15'
 	AND l_shipdate > date '1995-03-15';
-*/
