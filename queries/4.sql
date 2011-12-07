@@ -1,5 +1,5 @@
 -- QUERY 4
-/*
+
 select
 	o_orderpriority,
 	count(*) as order_count
@@ -21,8 +21,8 @@ group by
 	o_orderpriority
 order by
 	o_orderpriority;
-*/
 
+/*
 select
 	o_orderpriority,
 	order_count
@@ -40,3 +40,4 @@ where
 			l_orderkey = o_orderkey
 			and l_commitdate < l_receiptdate
 	);
+*/
