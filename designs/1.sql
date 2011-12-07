@@ -1,7 +1,6 @@
-
 -- QUERY 1
-
-CREATE TABLE mv_lineitem
+DROP TABLE IF EXISTS mv_1;
+CREATE TABLE mv_1
     SELECT
         l_returnflag,
         l_linestatus,
