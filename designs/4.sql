@@ -34,5 +34,4 @@ CREATE TABLE mv_lineitem_query4
 	FROM
 		lineitem
 	WHERE 
-		l_orderkey = o_orderkey
 		and l_commitdate < l_receiptdate;
