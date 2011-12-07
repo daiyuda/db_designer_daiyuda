@@ -62,3 +62,12 @@ CREATE TABLE mv_7
 		and c_custkey = o_custkey
 		and s_nationkey = n1.n_nationkey
 		and c_nationkey = n2.n_nationkey;
+
+DROP INDEX supp_nation ON mv_7;
+CREATE INDEX supp_nation ON mv_7 (supp_nation);
+
+DROP INDEX cust_nation ON mv_7;
+CREATE INDEX cust_nation ON mv_7 (cust_nation);
+
+DROP INDEX shipdate ON mv_7;
+CREATE INDEX shipdate ON mv_7 (l_shipdate);
