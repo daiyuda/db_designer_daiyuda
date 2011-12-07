@@ -54,6 +54,24 @@ group by
 order by
 	o_year);
 */
+explain(
+select
+	o_year,
+	sum(case
+		when nation = 'BRAZIL' then volume
+		else 0
+	end) / sum(volume) as mkt_share
+from
+	mv_8
+WHERE
+	r_name = 'AMERICA'
+	and o_orderdate between date '1995-01-01' and date '1996-12-31'
+	and p_type = 'ECONOMY ANODIZED STEEL'
+group by
+	o_year
+order by
+	o_year);
+
 select
 	o_year,
 	sum(case
