@@ -68,10 +68,7 @@ DROP INDEX min_supply ON partsupp;
 CREATE INDEX min_supply ON partsupp( ps_supplycost );
 */
 DROP INDEX size ON part;
-CREATE INDEX size 
-USING HASH
-ON part( p_size );
-/*
+CREATE INDEX size ON part( p_size );
+
 DROP INDEX name ON region;
 CREATE INDEX name ON region( r_name );
-*/
