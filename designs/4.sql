@@ -35,5 +35,8 @@ CREATE TABLE mv_4
 		lineitem
 	WHERE
 		l_commitdate < l_receiptdate;
+/*
 ALTER TABLE mv_4
 ADD PRIMARY KEY (l_orderkey);
+*/
+CREATE INDEX mmmm ON mv (l_orderkey);
