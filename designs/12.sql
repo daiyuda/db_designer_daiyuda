@@ -42,9 +42,9 @@ CREATE TABLE mv_12
 		lineitem
 	WHERE
 		o_orderkey = l_orderkey
-		and l_commitdate < l_receiptdate
-		and l_shipdate < l_commitdate
-	group by
+		AND l_commitdate < l_receiptdate
+		AND l_shipdate < l_commitdate
+	GROUP BY
 		l_shipmode,
 		o_orderpriority,
 		l_receiptdate;
