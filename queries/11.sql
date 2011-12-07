@@ -1,4 +1,5 @@
 -- QUERY 11
+explain(
 select
 	ps_partkey,
 	sum(ps_supplycost * ps_availqty) as value
@@ -25,4 +26,5 @@ group by
 				and n_name = 'GERMANY'
 		)
 order by
-	value desc;
+	value desc
+);
