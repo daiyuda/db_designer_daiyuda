@@ -34,6 +34,7 @@ DROP TABLE IF EXISTS mv_12;
 CREATE TABLE mv_12
 	SELECT
 		l_shipmode,
+		o_orderpriority,
 		SUM(o_orderpriority) AS total,
 		l_receiptdate
 	FROM
@@ -45,4 +46,5 @@ CREATE TABLE mv_12
 		and l_shipdate < l_commitdate
 	group by
 		l_shipmode,
+		o_orderpriority,
 		l_receiptdate;
