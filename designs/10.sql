@@ -62,4 +62,6 @@ CREATE TABLE mv_10
 		c_phone,
 		n_name,
 		c_address,
-		c_comment;
+		c_comment,
+		o_orderdate,
+		l_returnflag;
