@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS mv_8;
 CREATE TABLE mv_8
 	select
 		extract(year from o_orderdate) as o_year,
-		l_extendedprice * (1 - l_discount) as volume,
+		SUM(l_extendedprice * (1 - l_discount)) as volume,
 		n2.n_name as nation,
 		r_name,
 		o_orderdate,
@@ -64,4 +64,10 @@ CREATE TABLE mv_8
 		and o_custkey = c_custkey
 		and c_nationkey = n1.n_nationkey
 		and n1.n_regionkey = r_regionkey
-		and s_nationkey = n2.n_nationkey;
+		and s_nationkey = n2.n_nationkey
+	GROUP BY
+		o_year,
+		nation,
+		r_name,
+		o_orderdate,
+		p_type;
