@@ -35,7 +35,7 @@ CREATE TABLE mv_12
 	SELECT
 		l_shipmode,
 		o_orderpriority,
-		SUM(o_orderpriority) AS total,
+		COUNT(o_orderpriority) AS total,
 		l_receiptdate
 	FROM
 		orders,
