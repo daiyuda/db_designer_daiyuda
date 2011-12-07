@@ -37,7 +37,7 @@ explain(
 select
 	c_custkey,
 	c_name,
-	sum(l_extendedprice * (1 - l_discount)) as revenue,
+	sum(revenue) as revenue,
 	c_acctbal,
 	n_name,
 	c_address,
@@ -64,7 +64,7 @@ order by
 select
 	c_custkey,
 	c_name,
-	sum(l_extendedprice * (1 - l_discount)) as revenue,
+	sum(revenue) as revenue,
 	c_acctbal,
 	n_name,
 	c_address,
