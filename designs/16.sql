@@ -51,5 +51,7 @@ CREATE TABLE mv_16
 		p_size,
 		ps_suppkey;
 
+/*
 DROP INDEX size ON mv_16;
 CREATE INDEX size ON mv_16 (p_size);
+*/
