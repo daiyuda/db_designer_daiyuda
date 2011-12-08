@@ -17,7 +17,6 @@ CREATE TABLE mv_1
                 lineitem
         GROUP BY
                 l_returnflag,
-                l_linestatus
-        ORDER BY
-                l_returnflag,
-                l_linestatus;
+                l_linestatus,
+                l_shipdate,
+                l_tax;
