@@ -62,9 +62,9 @@ EXPLAIN(
 		SUM(sum_disc_price) AS sum_disc_price,
 		SUM(sum_charge) AS sum_charge,
 		
-		SUM(sum_quantity) / SUM(cnt_quantity) AS avg_qty,
-		SUM(sum_extendedprice) / SUM(cnt_extendedprice) AS avg_price,
-		SUM(sum_discount) / SUM(cnt_discount) AS avg_disc,
+		SUM(sum_qty) / SUM(count_order) AS avg_qty,
+		SUM(sum_base_price) / SUM(ccount_order) AS avg_price,
+		SUM(sum_discount) / SUM(count_order) AS avg_disc,
 	
 		SUM(count_order) AS count_order
 	FROM
@@ -87,9 +87,9 @@ SELECT
 	SUM(sum_disc_price) AS sum_disc_price,
 	SUM(sum_charge) AS sum_charge,
 	
-	SUM(sum_quantity) / SUM(cnt_quantity) AS avg_qty,
-	SUM(sum_extendedprice) / SUM(cnt_extendedprice) AS avg_price,
-	SUM(sum_discount) / SUM(cnt_discount) AS avg_disc,
+	SUM(sum_qty) / SUM(count_order) AS avg_qty,
+	SUM(sum_base_price) / SUM(ccount_order) AS avg_price,
+	SUM(sum_discount) / SUM(count_order) AS avg_disc,
 
 	SUM(count_order) AS count_order
 FROM
