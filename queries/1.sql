@@ -1,4 +1,10 @@
 -- QUERY 1
+/*+----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
+| id | select_type | table    | type | possible_keys | key  | key_len | ref  | rows    | Extra                                        |
++----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
+|  1 | SIMPLE      | lineitem | ALL  | shipdate      | NULL | NULL    | NULL | 1500000 | Using where; Using temporary; Using filesort |
++----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
+*/
 /*
 select
 	l_returnflag,
@@ -22,6 +28,7 @@ order by
 	l_returnflag,
 	l_linestatus;
 */
+/*
 explain(
 select
 	l_returnflag,
@@ -45,7 +52,7 @@ order by
 	l_returnflag,
 	l_linestatus
 );
-
+*/
 EXPLAIN(
 	SELECT
 		l_returnflag,
@@ -69,7 +76,7 @@ EXPLAIN(
 		l_linestatus
 	ORDER BY
 		l_returnflag,
-		l_linestatus;
+		l_linestatus
 );
 
 SELECT
