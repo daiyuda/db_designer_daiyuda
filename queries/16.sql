@@ -1,4 +1,14 @@
 -- QUERY 16
+/*
++----+--------------------+----------+-----------------+---------------+---------+---------+---------------------+-------+----------------------------------------------+
+| id | select_type        | table    | type            | possible_keys | key     | key_len | ref                 | rows  | Extra                                        |
++----+--------------------+----------+-----------------+---------------+---------+---------+---------------------+-------+----------------------------------------------+
+|  1 | PRIMARY            | part     | range           | PRIMARY,size  | size    | 4       | NULL                | 30954 | Using where; Using temporary; Using filesort |
+|  1 | PRIMARY            | partsupp | eq_ref          | PRIMARY       | PRIMARY | 4       | tpch.part.P_PARTKEY |     1 | Using where                                  |
+|  2 | DEPENDENT SUBQUERY | supplier | unique_subquery | PRIMARY       | PRIMARY | 4       | func                |     1 | Using where                                  |
++----+--------------------+----------+-----------------+---------------+---------+---------+---------------------+-------+----------------------------------------------+
+*/
+/*
 explain(
 select
 	p_brand,
@@ -31,6 +41,7 @@ order by
 	p_type,
 	p_size
 );
+*/
 /*
 select
 	p_brand,
