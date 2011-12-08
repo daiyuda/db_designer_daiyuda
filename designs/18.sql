@@ -1,4 +1,5 @@
 -- QUERY 18
+/*
 select
 	sum(l_extendedprice* (1 - l_discount)) as revenue
 from
@@ -34,4 +35,27 @@ where
 		and l_shipmode in ('AIR', 'AIR REG')
 		and l_shipinstruct = 'DELIVER IN PERSON'
 	);
+*/
 
+DROP TABLE IF EXISTS mv_18;
+CREATE TABLE mv_18
+	SELECT
+		sum(l_extendedprice* (1 - l_discount)) as revenue,
+		p_brand,
+		p_container,
+		l_quantity,
+		p_size between,
+		l_shipmode,
+		l_shipinstruct
+	FROM
+		lineitem,
+		part
+	WHERE
+		p_partkey = l_partkey
+	GROUP BY
+		p_brand,
+		p_container,
+		l_quantity,
+		p_size between,
+		l_shipmode,
+		l_shipinstruct;
