@@ -8,7 +8,7 @@
 |  2 | DEPENDENT SUBQUERY | supplier | unique_subquery | PRIMARY       | PRIMARY | 4       | func                |     1 | Using where                                  |
 +----+--------------------+----------+-----------------+---------------+---------+---------+---------------------+-------+----------------------------------------------+
 */
-/*
+
 explain(
 select
 	p_brand,
@@ -41,7 +41,7 @@ order by
 	p_type,
 	p_size
 );
-*/
+
 /*
 select
 	p_brand,
