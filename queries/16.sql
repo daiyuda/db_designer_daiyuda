@@ -31,7 +31,7 @@ order by
 	p_type,
 	p_size
 );
-
+/*
 select
 	p_brand,
 	p_type,
@@ -62,3 +62,4 @@ order by
 	p_brand,
 	p_type,
 	p_size;
+*/
