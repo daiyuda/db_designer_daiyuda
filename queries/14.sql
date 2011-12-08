@@ -34,7 +34,7 @@ select
 		when p_type like 'PROMO%'
 			then price
 		else 0
-	end) / total as promo_revenue
+	end) / sum(total) as promo_revenue
 from
 	mv_14
 where
