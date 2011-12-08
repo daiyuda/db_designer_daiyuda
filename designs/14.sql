@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS mv_14;
 CREATE TABLE mv_14
 	SELECT
 		p_type,
-		l_extendedprice * (1 - l_discount) as price,
+		l_extendedprice * (1 - l_discount) AS price,
 		SUM(l_extendedprice * (1 - l_discount)) AS total,
 		l_shipdate
 	FROM
