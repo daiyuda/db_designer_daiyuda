@@ -76,7 +76,7 @@ where
 	s_suppkey = supplier_no
 	and total_revenue = (
 		select
-			total_revenue
+			max(total_revenue)
 		from
 			revenue0
 	)
