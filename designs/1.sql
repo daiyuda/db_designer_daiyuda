@@ -47,7 +47,4 @@ CREATE TABLE mv_1
         GROUP BY
                 l_returnflag,
                 l_linestatus,
-                l_shipdate,
-		l_quantity,
-               	l_extendedprice,
-                l_discount;
+                l_shipdate;
