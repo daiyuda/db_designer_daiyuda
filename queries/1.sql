@@ -30,9 +30,9 @@ EXPLAIN(
 		SUM(sum_base_price) AS sum_base_price,
 		SUM(sum_disc_price) AS sum_disc_price,
 		SUM(sum_charge) AS sum_charge,
-		AVG(avg_qty) AS avg_qty,
-		AVG(avg_price) AS avg_price,
-		AVG(avg_disc) AS avg_disc,
+		AVG(l_quantity) AS avg_qty,
+		AVG(l_extendedprice) AS avg_price,
+		AVG(l_discount) AS avg_disc,
 		SUM(count_order) AS count_order
 	FROM
 		mv_1
@@ -53,9 +53,9 @@ SELECT
 	SUM(sum_base_price) AS sum_base_price,
 	SUM(sum_disc_price) AS sum_disc_price,
 	SUM(sum_charge) AS sum_charge,
-	AVG(avg_qty) AS avg_qty,
-	AVG(avg_price) AS avg_price,
-	AVG(avg_disc) AS avg_disc,
+	AVG(l_quantity) AS avg_qty,
+	AVG(l_extendedprice) AS avg_price,
+	AVG(l_discount) AS avg_disc,
 	SUM(count_order) AS count_order
 FROM
 	mv_1
