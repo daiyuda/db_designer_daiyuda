@@ -1,4 +1,5 @@
 -- QUERY 19
+/*
 select
 	s_name,
 	count(*) as numwait
@@ -38,3 +39,4 @@ group by
 order by
 	numwait desc,
 	s_name;
+*/
