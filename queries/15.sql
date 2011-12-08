@@ -11,7 +11,7 @@
 |  4 | DERIVED     | lineitem   | ALL    | NULL          | NULL    | NULL    | NULL                 | 1500000 | Using where; Using temporary; Using filesort |
 +----+-------------+------------+--------+---------------+---------+---------+----------------------+---------+----------------------------------------------+
 */
-/*
+
 drop view if exists revenue0;
 
 create view revenue0 (supplier_no, total_revenue) as
@@ -25,64 +25,6 @@ create view revenue0 (supplier_no, total_revenue) as
 		and l_shipdate < date '1996-01-01' + interval '3' month
 	group by
 		l_suppkey;
-
-select
-	s_suppkey,
-	s_name,
-	s_address,
-	s_phone,
-	total_revenue
-from
-	supplier,
-	revenue0
-where
-	s_suppkey = supplier_no
-	and total_revenue = (
-		select
-			max(total_revenue)
-		from
-			revenue0
-	)
-order by
-	s_suppkey;
-
-drop view revenue0;
-*/
-drop view if exists revenue0;
-
-create view revenue0 (supplier_no, total_revenue) as
-	select
-		l_suppkey,
-		MAX(price)
-	from
-		mv_15
-	where
-		l_shipdate >= date '1996-01-01'
-		and l_shipdate < date '1996-01-01' + interval '3' month
-	group by
-		l_suppkey;
-
-EXPLAIN(
-select
-	s_suppkey,
-	s_name,
-	s_address,
-	s_phone,
-	total_revenue
-from
-	supplier,
-	revenue0
-where
-	s_suppkey = supplier_no
-	and total_revenue = (
-		select
-			max(total_revenue)
-		from
-			revenue0
-	)
-order by
-	s_suppkey
-);
 
 select
 	s_suppkey,
