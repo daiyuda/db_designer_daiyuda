@@ -1,4 +1,5 @@
 -- QUERY 15
+drop view if exists revenue0;
 
 create view revenue0 (supplier_no, total_revenue) as
 	select

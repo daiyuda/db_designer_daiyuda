@@ -15,28 +15,29 @@ where
 	and l_shipdate >= date '1995-09-01'
 	and l_shipdate < date '1995-09-01' + interval '1' month)
 */
-explain(
-select
-	100.00 * sum(case
-		when p_type like 'PROMO%'
-			then price
-		else 0
-	end) / sum(price) as promo_revenue
-from
+
+EXPLAIN(
+SELECT
+	100.00 * SUM(CASE
+		WHEN p_type LIKE 'PROMO%'
+			THEN price
+		ELSE 0
+	END) / SUM(price) AS promo_revenue
+FROM
 	mv_14
-where
+WHERE
 	l_shipdate >= date '1995-09-01'
-	and l_shipdate < date '1995-09-01' + interval '1' month
+	AND l_shipdate < date '1995-09-01' + interval '1' month;
 );
 
-select
-	100.00 * sum(case
-		when p_type like 'PROMO%'
-			then price
-		else 0
-	end) / sum(price) as promo_revenue
-from
+SELECT
+	100.00 * SUM(CASE
+		WHEN p_type LIKE 'PROMO%'
+			THEN price
+		ELSE 0
+	END) / SUM(price) AS promo_revenue
+FROM
 	mv_14
-where
+WHERE
 	l_shipdate >= date '1995-09-01'
-	and l_shipdate < date '1995-09-01' + interval '1' month;
+	AND l_shipdate < date '1995-09-01' + interval '1' month;
