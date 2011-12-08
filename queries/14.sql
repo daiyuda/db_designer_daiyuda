@@ -21,12 +21,12 @@ select
 		when p_type like 'PROMO%'
 			then price
 		else 0
-	end) / total as promo_revenue
+	end) / sum(price) as promo_revenue
 from
 	mv_14
 where
 	l_shipdate >= date '1995-09-01'
-	and l_shipdate < date '1995-09-01' + interval '1' month
+	and l_shipdate < date '1995-09-01' + interval '1' month;
 );
 
 select
@@ -34,7 +34,7 @@ select
 		when p_type like 'PROMO%'
 			then price
 		else 0
-	end) / sum(total) as promo_revenue
+	end) / sum(price) as promo_revenue
 from
 	mv_14
 where
