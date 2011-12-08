@@ -40,43 +40,44 @@ order by
 	numwait desc,
 	s_name;
 */
+
 DROP TABLE IF EXISTS mv_19;
 CREATE TABLE mv_19
-	select
+	SELECT
 		s_name,
-		count(*) as numwait,
+		COUNT(*) AS numwait,
 		o_orderstatus,
 		n_name
-	from
+	FROM
 		supplier,
 		lineitem l1,
 		orders,
 		nation
-	where
+	WHERE
 		s_suppkey = l1.l_suppkey
-		and o_orderkey = l1.l_orderkey
-		and l1.l_receiptdate > l1.l_commitdate
-		and exists (
-			select
+		AND o_orderkey = l1.l_orderkey
+		AND l1.l_receiptdate > l1.l_commitdate
+		AND exists (
+			SELECT
 				*
-			from
+			FROM
 				lineitem l2
-			where
+			WHERE
 				l2.l_orderkey = l1.l_orderkey
-				and l2.l_suppkey <> l1.l_suppkey
+				AND l2.l_suppkey <> l1.l_suppkey
 		)
-		and not exists (
-			select
+		AND NOT EXISTS (
+			SELECT
 				*
-			from
+			FROM
 				lineitem l3
-			where
+			WHERE
 				l3.l_orderkey = l1.l_orderkey
-				and l3.l_suppkey <> l1.l_suppkey
-				and l3.l_receiptdate > l3.l_commitdate
+				AND l3.l_suppkey <> l1.l_suppkey
+				AND l3.l_receiptdate > l3.l_commitdate
 		)
-		and s_nationkey = n_nationkey
-	group by
+		AND s_nationkey = n_nationkey
+	GROUP BY
 		s_name,
 		o_orderstatus,
 		n_name;
