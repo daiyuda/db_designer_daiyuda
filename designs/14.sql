@@ -24,7 +24,7 @@ CREATE TABLE mv_14
 	SELECT
 		p_type,
 		l_extendedprice * (1 - l_discount) as price,
-		SUM(price) AS total,
+		SUM(l_extendedprice * (1 - l_discount)) AS total,
 		l_shipdate
 	FROM
 		lineitem,
