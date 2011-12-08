@@ -34,12 +34,7 @@ CREATE TABLE mv_1
                 SUM(l_extendedprice * (1 - l_discount)) AS sum_disc_price,
                 SUM(l_extendedprice * (1 - l_discount) * (1 + l_tax)) AS sum_charge,
 
-                SUM(l_quantity) AS sum_quantity,
-		SUM(l_extendedprice) AS sum_extendedprice,
 		SUM(l_discount) AS sum_discount,
-               	COUNT(l_quantity) AS cnt_quantity,
-                COUNT(l_extendedprice) AS cnt_extendedprice,
-		COUNT(l_discount) AS cnt_discount,
 
                 COUNT(*) AS count_order
         FROM
