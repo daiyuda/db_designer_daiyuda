@@ -1,4 +1,5 @@
 -- QUERY 16
+/*
 select
 	p_brand,
 	p_type,
@@ -29,3 +30,8 @@ order by
 	p_brand,
 	p_type,
 	p_size;
+*/
+
+DROP TABLE IF EXISTS mv_16;
+CREATE TABLE mv_16
+
