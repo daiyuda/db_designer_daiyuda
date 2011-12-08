@@ -32,7 +32,7 @@ SELECT
 	SUM(sum_base_price * (1 - l_discount) * (1 + l_tax)) AS sum_charge,
 	AVG(avg_qty) AS avg_qty,
 	AVG(avg_price) AS avg_price,
-	AVG(avg_disc) AS vg_disc,
+	AVG(avg_disc) AS avg_disc,
 	SUM(count_order) AS count_order
 FROM
 	mv_1
