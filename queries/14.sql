@@ -1,4 +1,5 @@
 -- QUERY 14
+/*
 explain(
 select
 	100.00 * sum(case
@@ -13,18 +14,29 @@ where
 	l_partkey = p_partkey
 	and l_shipdate >= date '1995-09-01'
 	and l_shipdate < date '1995-09-01' + interval '1' month);
-
+*/
+explain(
+select
+	100.00 * sum(case
+		when p_type like 'PROMO%'
+			then price
+		else 0
+	end) / total as promo_revenue
+from
+	mv_14
+where
+	l_shipdate >= date '1995-09-01'
+	and l_shipdate < date '1995-09-01' + interval '1' month
+);
 
 select
 	100.00 * sum(case
 		when p_type like 'PROMO%'
-			then l_extendedprice * (1 - l_discount)
+			then price
 		else 0
-	end) / sum(l_extendedprice * (1 - l_discount)) as promo_revenue
+	end) / total as promo_revenue
 from
-	lineitem,
-	part
+	mv_14
 where
-	l_partkey = p_partkey
-	and l_shipdate >= date '1995-09-01'
+	l_shipdate >= date '1995-09-01'
 	and l_shipdate < date '1995-09-01' + interval '1' month;
