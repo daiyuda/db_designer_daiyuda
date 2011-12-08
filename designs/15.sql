@@ -1,4 +1,5 @@
 -- QUERY 15
+/*
 drop view if exists revenue0;
 
 create view revenue0 (supplier_no, total_revenue) as
@@ -12,6 +13,7 @@ create view revenue0 (supplier_no, total_revenue) as
 		and l_shipdate < date '1996-01-01' + interval '3' month
 	group by
 		l_suppkey;
+
 
 select
 	s_suppkey,
@@ -34,3 +36,7 @@ order by
 	s_suppkey;
 
 drop view revenue0;
+*/
+
+DROP INDEX shipdate ON lineitem;
+CREATE INDEX shipdate ON lineitem(l_shipdate);
