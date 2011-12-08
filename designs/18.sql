@@ -56,6 +56,6 @@ CREATE TABLE mv_18
 		p_brand,
 		p_container,
 		l_quantity,
-		p_size between,
+		p_size,
 		l_shipmode,
 		l_shipinstruct;
