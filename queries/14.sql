@@ -1,4 +1,5 @@
 -- QUERY 14
+
 select
 	100.00 * sum(case
 		when p_type like 'PROMO%'
@@ -12,7 +13,7 @@ where
 	l_partkey = p_partkey
 	and l_shipdate >= date '1995-09-01'
 	and l_shipdate < date '1995-09-01' + interval '1' month;
-
+/*
 create view revenue0 (supplier_no, total_revenue) as
 	select
 		l_suppkey,
@@ -24,4 +25,4 @@ create view revenue0 (supplier_no, total_revenue) as
 		and l_shipdate < date '1996-01-01' + interval '3' month
 	group by
 		l_suppkey;
-
+*/
