@@ -22,6 +22,29 @@ order by
 	l_returnflag,
 	l_linestatus;
 */
+EXPLAIN(
+	SELECT
+		l_returnflag,
+		l_linestatus,
+		SUM(sum_qty) AS sum_qty,
+		SUM(sum_base_price) AS sum_base_price,
+		SUM(sum_disc_price) AS sum_disc_price,
+		SUM(sum_charge) AS sum_charge,
+		AVG(avg_qty) AS avg_qty,
+		AVG(avg_price) AS avg_price,
+		AVG(avg_disc) AS avg_disc,
+		SUM(count_order) AS count_order
+	FROM
+		mv_1
+	WHERE
+		l_shipdate <= date '1998-12-01'
+	GROUP BY
+		l_returnflag,
+		l_linestatus
+	ORDER BY
+		l_returnflag,
+		l_linestatus
+);
 
 SELECT
 	l_returnflag,
