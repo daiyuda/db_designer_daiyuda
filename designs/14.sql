@@ -14,8 +14,10 @@ where
 	and l_shipdate >= date '1995-09-01'
 	and l_shipdate < date '1995-09-01' + interval '1' month;
 */
+/*
 drop index shipdate on lineitem;
 create index shipdate on lineitem(l_shipdate);
+*/
 
 DROP TABLE IF EXISTS mv_14;
 CREATE TABLE mv_14
@@ -23,7 +25,7 @@ CREATE TABLE mv_14
 		p_type,
 		l_extendedprice * (1 - l_discount) as price,
 		SUM(price) AS total,
-		l_shipdate,
+		l_shipdate
 	FROM
 		lineitem,
 		part
