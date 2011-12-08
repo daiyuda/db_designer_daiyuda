@@ -24,15 +24,10 @@ CREATE TABLE mv_14
 	SELECT
 		p_type,
 		l_extendedprice * (1 - l_discount) AS price,
-		SUM(l_extendedprice * (1 - l_discount)) AS total,
 		l_shipdate
 	FROM
 		lineitem,
 		part
 	WHERE
-		l_partkey = p_partkey
-	GROUP BY
-		p_type,
-		price,
-		l_shipdate;
+		l_partkey = p_partkey;
 	
