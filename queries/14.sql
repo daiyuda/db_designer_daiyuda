@@ -27,7 +27,7 @@ FROM
 	mv_14
 WHERE
 	l_shipdate >= date '1995-09-01'
-	AND l_shipdate < date '1995-09-01' + interval '1' month;
+	AND l_shipdate < date '1995-09-01' + interval '1' month
 );
 
 SELECT
