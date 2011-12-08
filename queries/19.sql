@@ -97,7 +97,7 @@ order by
 EXPLAIN(
 SELECT 
 	s_name,
-	sum(numwait) as numwait,
+	sum(numwait) as numwait
 FROM
 	mv_19
 WHERE
@@ -107,12 +107,12 @@ group by
 	s_name
 order by
 	numwait desc,
-	s_name
+	s_name;
 );
 
 SELECT 
 	s_name,
-	sum(numwait) as numwait,
+	sum(numwait) as numwait
 FROM
 	mv_19
 WHERE
