@@ -18,15 +18,3 @@ WHERE
 	AND l_discount between .06 - 0.01 AND .06 + 0.01
 	AND l_quantity < 24;
 
-
-EXPLAIN(
-	SELECT
-		SUM(revenue) AS revenue
-	FROM
-		mv_6
-	WHERE
-		l_shipdate >= date '1994-01-01'
-		AND l_shipdate < date '1994-01-01' + interval '1' year
-		AND l_discount between .06 - 0.01 AND .06 + 0.01
-		AND l_quantity < 24
-);
