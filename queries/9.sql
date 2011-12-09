@@ -11,6 +11,7 @@
 |  2 | DERIVED     | supplier   | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.lineitem.L_SUPPKEY   |       1 |                                 |
 |  2 | DERIVED     | nation     | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.supplier.S_NATIONKEY |       1 |                                 |
 +----+-------------+------------+--------+---------------+---------+---------+---------------------------+---------+---------------------------------+
+175 rows in set (1 min 59.70 sec)
 */
 
 
