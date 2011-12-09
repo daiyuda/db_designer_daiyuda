@@ -24,6 +24,7 @@ CREATE TABLE mv_6
 		l_shipdate,
 		l_discount,
 		l_quantity;
-
+/*
 DROP INDEX shipdate ON mv_6;
 CREATE INDEX shipdate ON mv_6 (l_shipdate);
+*/
