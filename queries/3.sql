@@ -21,17 +21,11 @@ WHERE
 	c_mktsegment = 'BUILDING'
 	AND o_orderdate < date '1995-03-15'
 	AND l_shipdate > date '1995-03-15';
-
-EXPLAIN(
-	SELECT
-		l_orderkey,
-		revenue,
-		o_orderdate,
-		o_shippriority
-	FROM
-		mv_3
-	WHERE
-		c_mktsegment = 'BUILDING'
-		AND o_orderdate < date '1995-03-15'
-		AND l_shipdate > date '1995-03-15'
-);
+/*
++----+-------------+-------+------+---------------+------------+---------+-------+--------+-------------+
+| id | select_type | table | type | possible_keys | key        | key_len | ref   | rows   | Extra       |
++----+-------------+-------+------+---------------+------------+---------+-------+--------+-------------+
+|  1 | SIMPLE      | mv_3  | ref  | mktsegment    | mktsegment | 10      | const | 232690 | Using where |
++----+-------------+-------+------+---------------+------------+---------+-------+--------+-------------+
+7656 rows in set (4.39 sec)
+*/
