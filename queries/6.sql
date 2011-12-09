@@ -1,36 +1,31 @@
 -- QUERY 6
 /*
-explain(
-select
-	sum(l_extendedprice * l_discount) as revenue
-from
-	lineitem
-where
-	l_shipdate >= date '1994-01-01'
-	and l_shipdate < date '1994-01-01' + interval '1' year
-	and l_discount between .06 - 0.01 and .06 + 0.01
-	and l_quantity < 24
-);
++----+-------------+----------+------+---------------+------+---------+------+---------+-------------+
+| id | select_type | table    | type | possible_keys | key  | key_len | ref  | rows    | Extra       |
++----+-------------+----------+------+---------------+------+---------+------+---------+-------------+
+|  1 | SIMPLE      | lineitem | ALL  | NULL          | NULL | NULL    | NULL | 1500000 | Using where |
++----+-------------+----------+------+---------------+------+---------+------+---------+-------------+
+1 row in set (3.49 sec)
 */
 
-explain(
-select
-	sum(revenue) as revenue
-from
-	mv_6
-where
-	l_shipdate >= date '1994-01-01'
-	and l_shipdate < date '1994-01-01' + interval '1' year
-	and l_discount between .06 - 0.01 and .06 + 0.01
-	and l_quantity < 24
+EXPLAIN(
+	SELECT
+		SUM(revenue) AS revenue
+	FROM
+		mv_6
+	WHERE
+		l_shipdate >= date '1994-01-01'
+		AND l_shipdate < date '1994-01-01' + interval '1' year
+		AND l_discount between .06 - 0.01 AND .06 + 0.01
+		AND l_quantity < 24
 );
 
-select
-	sum(revenue) as revenue
-from
+SELECT
+	SUM(revenue) AS revenue
+FROM
 	mv_6
-where
+WHERE
 	l_shipdate >= date '1994-01-01'
-	and l_shipdate < date '1994-01-01' + interval '1' year
-	and l_discount between .06 - 0.01 and .06 + 0.01
-	and l_quantity < 24;
+	AND l_shipdate < date '1994-01-01' + interval '1' year
+	AND l_discount between .06 - 0.01 AND .06 + 0.01
+	AND l_quantity < 24;
