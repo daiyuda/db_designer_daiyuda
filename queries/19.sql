@@ -10,90 +10,23 @@
 |  3 | DEPENDENT SUBQUERY | l3       | eq_ref | PRIMARY           | PRIMARY | 4       | tpch.l1.L_ORDERKEY     |       1 | Using where                                  |
 |  2 | DEPENDENT SUBQUERY | l2       | eq_ref | PRIMARY           | PRIMARY | 4       | tpch.l1.L_ORDERKEY     |       1 | Using where                                  |
 +----+--------------------+----------+--------+-------------------+---------+---------+------------------------+---------+----------------------------------------------+
+Empty set (49.81 sec)
 */
-/*
-explain(
-select
-	s_name,
-	count(*) as numwait
-from
-	supplier,
-	lineitem l1,
-	orders,
-	nation
-where
-	s_suppkey = l1.l_suppkey
-	and o_orderkey = l1.l_orderkey
-	and o_orderstatus = 'F'
-	and l1.l_receiptdate > l1.l_commitdate
-	and exists (
-		select
-			*
-		from
-			lineitem l2
-		where
-			l2.l_orderkey = l1.l_orderkey
-			and l2.l_suppkey <> l1.l_suppkey
-	)
-	and not exists (
-		select
-			*
-		from
-			lineitem l3
-		where
-			l3.l_orderkey = l1.l_orderkey
-			and l3.l_suppkey <> l1.l_suppkey
-			and l3.l_receiptdate > l3.l_commitdate
-	)
-	and s_nationkey = n_nationkey
-	and n_name = 'SAUDI ARABIA'
-group by
-	s_name
-order by
-	numwait desc,
-	s_name);
 
-
-select
+SELECT 
 	s_name,
-	count(*) as numwait
-from
-	supplier,
-	lineitem l1,
-	orders,
-	nation
-where
-	s_suppkey = l1.l_suppkey
-	and o_orderkey = l1.l_orderkey
-	and o_orderstatus = 'F'
-	and l1.l_receiptdate > l1.l_commitdate
-	and exists (
-		select
-			*
-		from
-			lineitem l2
-		where
-			l2.l_orderkey = l1.l_orderkey
-			and l2.l_suppkey <> l1.l_suppkey
-	)
-	and not exists (
-		select
-			*
-		from
-			lineitem l3
-		where
-			l3.l_orderkey = l1.l_orderkey
-			and l3.l_suppkey <> l1.l_suppkey
-			and l3.l_receiptdate > l3.l_commitdate
-	)
-	and s_nationkey = n_nationkey
-	and n_name = 'SAUDI ARABIA'
-group by
+	SUM(numwait) AS numwait
+FROM
+	mv_19
+WHERE
+	o_orderstatus = 'F'
+	AND n_name = 'SAUDI ARABIA'
+GROUP BY
 	s_name
-order by
-	numwait desc,
+ORDER BY
+	numwait DESC,
 	s_name;
-*/
+
 
 EXPLAIN(
 	SELECT 
@@ -110,17 +43,3 @@ EXPLAIN(
 		numwait DESC,
 		s_name
 );
-
-SELECT 
-	s_name,
-	SUM(numwait) AS numwait
-FROM
-	mv_19
-WHERE
-	o_orderstatus = 'F'
-	AND n_name = 'SAUDI ARABIA'
-GROUP BY
-	s_name
-ORDER BY
-	numwait DESC,
-	s_name;
