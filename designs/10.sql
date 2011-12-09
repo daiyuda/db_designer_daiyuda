@@ -33,5 +33,5 @@ CREATE TABLE mv_10
 		o_orderdate,
 		l_returnflag;
 
-DROP INDEX orderdate ON mv10;
-CREATE INDEX orderdate ON mv10 (o_orderdate);
+DROP INDEX orderdate ON mv_10;
+CREATE INDEX orderdate ON mv_10 (o_orderdate);
