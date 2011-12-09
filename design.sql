@@ -372,18 +372,18 @@ CREATE INDEX shipdate ON mv_15(l_shipdate);
 
 DROP TABLE IF EXISTS mv_16;
 CREATE TABLE mv_16
-	select
+	SELECT
 		p_brand,
 		p_type,
 		p_size,
-		count(distinct ps_suppkey) as supplier_cnt,
+		COUNT(DISTINCT ps_suppkey) AS supplier_cnt,
 		ps_suppkey
-	from
+	FROM
 		partsupp,
 		part
-	where
+	WHERE
 		p_partkey = ps_partkey
-	group by
+	GROUP BY
 		p_brand,
 		p_type,
 		p_size,
