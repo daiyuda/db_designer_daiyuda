@@ -22,7 +22,7 @@ group by
 order by
 	l_returnflag,
 	l_linestatus;
-
+/*
 -- QUERY 2
 select
 	s_acctbal,
@@ -67,7 +67,8 @@ order by
 	n_name,
 	s_name,
 	p_partkey;
-
+*/
+/*
 -- QUERY 3
 select
 	l_orderkey,
@@ -91,7 +92,7 @@ group by
 order by
 	revenue desc,
 	o_orderdate;
-
+*/
 -- QUERY 4
 select
 	o_orderpriority,
@@ -233,6 +234,7 @@ group by
 order by
 	o_year;
 
+/*
 -- QUERY 9
 select
 	nation,
@@ -266,7 +268,8 @@ group by
 order by
 	nation,
 	o_year desc;
-
+*/
+/*
 -- QUERY 10
 select
 	c_custkey,
@@ -299,7 +302,8 @@ group by
 	c_comment
 order by
 	revenue desc;
-
+*/
+/*
 -- QUERY 11
 select
 	ps_partkey,
@@ -328,7 +332,7 @@ group by
 		)
 order by
 	value desc;
-
+*/
 -- QUERY 12
 select
 	l_shipmode,
@@ -359,27 +363,6 @@ group by
 order by
 	l_shipmode;
 
--- QUERY 13
-select
-	c_count,
-	count(*) as custdist
-from
-	(
-		select
-			c_custkey,
-			count(o_orderkey)
-		from
-			customer left outer join orders on
-				c_custkey = o_custkey
-				and o_comment not like '%special%requests%'
-		group by
-			c_custkey
-	) as c_orders (c_custkey, c_count)
-group by
-	c_count
-order by
-	custdist desc,
-	c_count desc;
 
 -- QUERY 14
 select
@@ -432,6 +415,7 @@ order by
 
 drop view revenue0;
 
+/*
 -- QUERY 16
 select
 	p_brand,
@@ -463,25 +447,7 @@ order by
 	p_brand,
 	p_type,
 	p_size;
-
--- QUERY 17
-select
-	sum(l_extendedprice) / 7.0 as avg_yearly
-from
-	lineitem,
-	part
-where
-	p_partkey = l_partkey
-	and p_brand = 'Brand#23'
-	and p_container = 'MED BOX'
-	and l_quantity < (
-		select
-			0.2 * avg(l_quantity)
-		from
-			lineitem
-		where
-			l_partkey = p_partkey
-	);
+*/
 
 -- QUERY 18
 select
@@ -560,42 +526,3 @@ group by
 order by
 	numwait desc,
 	s_name;
-
--- QUERY 20
-select
-	cntrycode,
-	count(*) as numcust,
-	sum(c_acctbal) as totacctbal
-from
-	(
-		select
-			substring(c_phone from 1 for 2) as cntrycode,
-			c_acctbal
-		from
-			customer
-		where
-			substring(c_phone from 1 for 2) in
-				('13', '31', '23', '29', '30', '18', '17')
-			and c_acctbal > (
-				select
-					avg(c_acctbal)
-				from
-					customer
-				where
-					c_acctbal > 0.00
-					and substring(c_phone from 1 for 2) in
-						('13', '31', '23', '29', '30', '18', '17')
-			)
-			and not exists (
-				select
-					*
-				from
-					orders
-				where
-					o_custkey = c_custkey
-			)
-	) as custsale
-group by
-	cntrycode
-order by
-	cntrycode;
