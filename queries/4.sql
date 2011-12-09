@@ -9,6 +9,20 @@
 5 rows in set (5.06 sec)
 */
 
+
+SELECT
+	o_orderpriority,
+	SUM(order_count) AS order_count
+FROM
+	mv_4
+WHERE
+	o_orderdate >= date '1993-07-01'
+	AND o_orderdate < date '1993-07-01' + interval '3' month
+GROUP BY
+	o_orderpriority
+ORDER BY
+	o_orderpriority;
+
 EXPLAIN(
 	SELECT
 		o_orderpriority,
@@ -23,16 +37,3 @@ EXPLAIN(
 	ORDER BY
 		o_orderpriority
 );
-
-SELECT
-	o_orderpriority,
-	SUM(order_count) AS order_count
-FROM
-	mv_4
-WHERE
-	o_orderdate >= date '1993-07-01'
-	AND o_orderdate < date '1993-07-01' + interval '3' month
-GROUP BY
-	o_orderpriority
-ORDER BY
-	o_orderpriority;
