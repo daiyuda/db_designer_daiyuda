@@ -11,8 +11,23 @@
 |  1 | SIMPLE      | lineitem | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.orders.O_ORDERKEY    |       1 |                                              |
 |  1 | SIMPLE      | supplier | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.lineitem.L_SUPPKEY   |       1 | Using where                                  |
 +----+-------------+----------+--------+---------------+---------+---------+---------------------------+---------+----------------------------------------------+
-5 rows in set (16.41 sec)
+5 rows in set (23.09 sec)
 */
+
+
+SELECT
+	n_name,
+	SUM(revenue) AS revenue
+FROM
+	mv_5
+WHERE
+	r_name = 'ASIA'
+	AND o_orderdate >= date '1994-01-01'
+	AND o_orderdate < date '1994-01-01' + interval '1' year
+GROUP BY
+	n_name
+ORDER BY
+	revenue DESC;
 
 EXPLAIN(
 	SELECT
@@ -29,17 +44,3 @@ EXPLAIN(
 	ORDER BY
 		revenue DESC
 );
-
-SELECT
-	n_name,
-	SUM(revenue) AS revenue
-FROM
-	mv_5
-WHERE
-	r_name = 'ASIA'
-	AND o_orderdate >= date '1994-01-01'
-	AND o_orderdate < date '1994-01-01' + interval '1' year
-GROUP BY
-	n_name
-ORDER BY
-	revenue DESC;
