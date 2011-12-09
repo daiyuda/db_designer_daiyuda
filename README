@@ -10,6 +10,13 @@ exit
 #restar MySQL server
 sudo service mysqld restart
 
+mysql -u root -p
+CREATE DATABASE tpch;
+USE tpch;
+
+source ~/db_designer/create_tables.sql
+source ~/db_designer/load.sql
+
 mysql -u daiyuda -pdaiyuda tpch
 
 source ~/db_designer_daiyuda/check_space.sql
