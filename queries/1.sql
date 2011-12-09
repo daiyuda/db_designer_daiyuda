@@ -1,57 +1,11 @@
 -- QUERY 1
-/*+----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
+/*
++----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
 | id | select_type | table    | type | possible_keys | key  | key_len | ref  | rows    | Extra                                        |
 +----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
-|  1 | SIMPLE      | lineitem | ALL  | shipdate      | NULL | NULL    | NULL | 1500000 | Using where; Using temporary; Using filesort |
+|  1 | SIMPLE      | lineitem | ALL  | NULL          | NULL | NULL    | NULL | 1500000 | Using where; Using temporary; Using filesort |
 +----+-------------+----------+------+---------------+------+---------+------+---------+----------------------------------------------+
-*/
-/*
-select
-	l_returnflag,
-	l_linestatus,
-	sum(l_quantity) as sum_qty,
-	sum(l_extendedprice) as sum_base_price,
-	sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-	sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-	avg(l_quantity) as avg_qty,
-	avg(l_extendedprice) as avg_price,
-	avg(l_discount) as avg_disc,
-	count(*) as count_order
-from
-	lineitem
-where
-	l_shipdate <= date '1998-12-01'
-group by
-	l_returnflag,
-	l_linestatus
-order by
-	l_returnflag,
-	l_linestatus;
-*/
-/*
-explain(
-select
-	l_returnflag,
-	l_linestatus,
-	sum(l_quantity) as sum_qty,
-	sum(l_extendedprice) as sum_base_price,
-	sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-	sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-	avg(l_quantity) as avg_qty,
-	avg(l_extendedprice) as avg_price,
-	avg(l_discount) as avg_disc,
-	count(*) as count_order
-from
-	lineitem
-where
-	l_shipdate <= date '1998-12-01'
-group by
-	l_returnflag,
-	l_linestatus
-order by
-	l_returnflag,
-	l_linestatus
-);
+4 rows in set (19.78 sec)
 */
 EXPLAIN(
 	SELECT
