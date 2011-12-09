@@ -10,44 +10,7 @@
 |  2 | SUBQUERY    | <derived4> | ALL    | NULL          | NULL    | NULL    | NULL                 |    9968 |                                              |
 |  4 | DERIVED     | lineitem   | ALL    | NULL          | NULL    | NULL    | NULL                 | 1500000 | Using where; Using temporary; Using filesort |
 +----+-------------+------------+--------+---------------+---------+---------+----------------------+---------+----------------------------------------------+
-*/
-
-/*
-drop view if exists revenue0;
-
-create view revenue0 (supplier_no, total_revenue) as
-	select
-		l_suppkey,
-		sum(l_extendedprice * (1 - l_discount))
-	from
-		lineitem
-	where
-		l_shipdate >= date '1996-01-01'
-		and l_shipdate < date '1996-01-01' + interval '3' month
-	group by
-		l_suppkey;
-
-select
-	s_suppkey,
-	s_name,
-	s_address,
-	s_phone,
-	total_revenue
-from
-	supplier,
-	revenue0
-where
-	s_suppkey = supplier_no
-	and total_revenue = (
-		select
-			max(total_revenue)
-		from
-			revenue0
-	)
-order by
-	s_suppkey;
-
-drop view revenue0;
+1 row in set (6.75 sec)
 */
 
 DROP VIEW IF EXISTS revenue0;
@@ -63,6 +26,28 @@ CREATE VIEW revenue0 (supplier_no, total_revenue) AS
 		AND l_shipdate < date '1996-01-01' + interval '3' month
 	GROUP BY
 		l_suppkey;
+
+
+
+SELECT
+	s_suppkey,
+	s_name,
+	s_address,
+	s_phone,
+	total_revenue
+FROM
+	supplier,
+	revenue0
+WHERE
+	s_suppkey = supplier_no
+	AND total_revenue = (
+		SELECT
+			MAX(total_revenue)
+		FROM
+			revenue0
+	)
+ORDER BY
+	s_suppkey;
 
 EXPLAIN(
 	SELECT
@@ -86,24 +71,4 @@ EXPLAIN(
 		s_suppkey
 );
 
-SELECT
-	s_suppkey,
-	s_name,
-	s_address,
-	s_phone,
-	total_revenue
-FROM
-	supplier,
-	revenue0
-WHERE
-	s_suppkey = supplier_no
-	AND total_revenue = (
-		SELECT
-			MAX(total_revenue)
-		FROM
-			revenue0
-	)
-ORDER BY
-	s_suppkey;
-
-drop view revenue0;
+DROP VIEW revenue0;
