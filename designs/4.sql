@@ -2,22 +2,22 @@
 
 DROP TABLE IF EXISTS mv_4;
 CREATE TABLE mv_4
-	select
+	SELECT
 		o_orderpriority,
-		count(*) as order_count,
+		COUNT(*) AS order_count,
 		o_orderdate
-	from
+	FROM
 		orders
-	where
-		exists (
-		select
-			*
-		from
-			lineitem
-		where
-			l_orderkey = o_orderkey
-			and l_commitdate < l_receiptdate
-	)
-group by
-	o_orderpriority,
-	o_orderdate;
+	WHERE
+		EXISTS (
+			SELECT
+				*
+			FROM
+				lineitem
+			WHERE
+				l_orderkey = o_orderkey
+				AND l_commitdate < l_receiptdate
+		)
+	GROUP BY
+		o_orderpriority,
+		o_orderdate;
