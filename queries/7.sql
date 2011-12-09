@@ -11,8 +11,29 @@
 |  2 | DERIVED     | customer   | eq_ref | PRIMARY          | PRIMARY | 4       | tpch.orders.O_CUSTKEY     |       1 |                                 |
 |  2 | DERIVED     | n2         | eq_ref | PRIMARY          | PRIMARY | 4       | tpch.customer.C_NATIONKEY |       1 | Using where                     |
 +----+-------------+------------+--------+------------------+---------+---------+---------------------------+---------+---------------------------------+
-
+4 rows in set (1 min 50.82 sec)
 */
+
+SELECT
+	supp_nation,
+	cust_nation,
+	l_year,
+	SUM(volume) AS revenue
+FROM 
+	mv_7
+WHERE
+	((supp_nation = 'FRANCE' and cust_nation = 'GERMANY')
+		OR (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
+	)
+	AND l_shipdate between date '1995-01-01' and date '1996-12-31'
+GROUP BY
+	supp_nation,
+	cust_nation,
+	l_year
+ORDER BY
+	supp_nation,
+	cust_nation,
+	l_year;
 
 EXPLAIN(
 	SELECT
@@ -36,24 +57,3 @@ EXPLAIN(
 		cust_nation,
 		l_year
 );
-
-SELECT
-	supp_nation,
-	cust_nation,
-	l_year,
-	SUM(volume) AS revenue
-FROM 
-	mv_7
-WHERE
-	((supp_nation = 'FRANCE' and cust_nation = 'GERMANY')
-		OR (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
-	)
-	AND l_shipdate between date '1995-01-01' and date '1996-12-31'
-GROUP BY
-	supp_nation,
-	cust_nation,
-	l_year
-ORDER BY
-	supp_nation,
-	cust_nation,
-	l_year;
