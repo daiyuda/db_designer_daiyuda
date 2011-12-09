@@ -14,7 +14,6 @@
 5 rows in set (23.09 sec)
 */
 
-
 SELECT
 	n_name,
 	SUM(revenue) AS revenue
@@ -28,19 +27,11 @@ GROUP BY
 	n_name
 ORDER BY
 	revenue DESC;
-
-EXPLAIN(
-	SELECT
-		n_name,
-		SUM(revenue) AS revenue
-	FROM
-		mv_5
-	WHERE
-		r_name = 'ASIA'
-		AND o_orderdate >= date '1994-01-01'
-		AND o_orderdate < date '1994-01-01' + interval '1' year
-	GROUP BY
-		n_name
-	ORDER BY
-		revenue DESC
-);
+/*
++----+-------------+-------+------+---------------+------+---------+-------+------+----------------------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref   | rows | Extra                                        |
++----+-------------+-------+------+---------------+------+---------+-------+------+----------------------------------------------+
+|  1 | SIMPLE      | mv_5  | ref  | name          | name | 25      | const | 5953 | Using where; Using temporary; Using filesort |
++----+-------------+-------+------+---------------+------+---------+-------+------+----------------------------------------------+
+5 rows in set (0.13 sec)
+*/
