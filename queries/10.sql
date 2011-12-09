@@ -1,65 +1,15 @@
 -- QUERY 10
 /*
-EXPLAIN(
-select
-	c_custkey,
-	c_name,
-	sum(l_extendedprice * (1 - l_discount)) as revenue,
-	c_acctbal,
-	n_name,
-	c_address,
-	c_phone,
-	c_comment
-from
-	customer,
-	orders,
-	lineitem,
-	nation
-where
-	c_custkey = o_custkey
-	and l_orderkey = o_orderkey
-	and o_orderdate >= date '1993-10-01'
-	and o_orderdate < date '1993-10-01' + interval '3' month
-	and l_returnflag = 'R'
-	and c_nationkey = n_nationkey
-group by
-	c_custkey,
-	c_name,
-	c_acctbal,
-	c_phone,
-	n_name,
-	c_address,
-	c_comment
-order by
-	revenue desc);
++----+-------------+----------+--------+---------------+---------+---------+---------------------------+---------+----------------------------------------------+
+| id | select_type | table    | type   | possible_keys | key     | key_len | ref                       | rows    | Extra                                        |
++----+-------------+----------+--------+---------------+---------+---------+---------------------------+---------+----------------------------------------------+
+|  1 | SIMPLE      | orders   | ALL    | PRIMARY       | NULL    | NULL    | NULL                      | 1500000 | Using where; Using temporary; Using filesort |
+|  1 | SIMPLE      | customer | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.orders.O_CUSTKEY     |       1 |                                              |
+|  1 | SIMPLE      | nation   | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.customer.C_NATIONKEY |       1 |                                              |
+|  1 | SIMPLE      | lineitem | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.orders.O_ORDERKEY    |       1 | Using where                                  |
++----+-------------+----------+--------+---------------+---------+---------+---------------------------+---------+----------------------------------------------+
+24470 rows in set (10.33 sec)
 */
-explain(
-	SELECT
-		c_custkey,
-		c_name,
-		SUM(revenue) AS revenue,
-		c_acctbal,
-		n_name,
-		c_address,
-		c_phone,
-		c_comment
-	FROM
-		mv_10
-	WHERE
-		o_orderdate >= date '1993-10-01'
-		AND o_orderdate < date '1993-10-01' + interval '3' month
-		AND l_returnflag = 'R'
-	GROUP BY
-		c_custkey,
-		c_name,
-		c_acctbal,
-		c_phone,
-		n_name,
-		c_address,
-		c_comment
-	ORDER BY
-		revenue DESC
-);
 
 SELECT
 	c_custkey,
@@ -86,3 +36,31 @@ GROUP BY
 	c_comment
 ORDER BY
 	revenue DESC;
+
+EXPLAIN(
+	SELECT
+		c_custkey,
+		c_name,
+		SUM(revenue) AS revenue,
+		c_acctbal,
+		n_name,
+		c_address,
+		c_phone,
+		c_comment
+	FROM
+		mv_10
+	WHERE
+		o_orderdate >= date '1993-10-01'
+		AND o_orderdate < date '1993-10-01' + interval '3' month
+		AND l_returnflag = 'R'
+	GROUP BY
+		c_custkey,
+		c_name,
+		c_acctbal,
+		c_phone,
+		n_name,
+		c_address,
+		c_comment
+	ORDER BY
+		revenue DESC
+);
