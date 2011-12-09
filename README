@@ -23,6 +23,8 @@ source ~/db_designer_daiyuda/check_space.sql
 
 source ~/db_designer_daiyuda/design.sql
 
+source ~/db_designer_daiyuda/tpch_queries.sql
+
 source ~/db_designer_daiyuda/designs/1.sql
 
 source ~/db_designer_daiyuda/queries/old/1.sql
