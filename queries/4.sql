@@ -6,7 +6,7 @@
 |  1 | PRIMARY            | orders   | ALL    | NULL          | NULL    | NULL    | NULL                   | 1500000 | Using where; Using temporary; Using filesort |
 |  2 | DEPENDENT SUBQUERY | lineitem | eq_ref | PRIMARY       | PRIMARY | 4       | tpch.orders.O_ORDERKEY |       1 | Using where                                  |
 +----+--------------------+----------+--------+---------------+---------+---------+------------------------+---------+----------------------------------------------+
-5 rows in set (5.06 sec)
+5 rows in set (5.64 sec)
 */
 
 
