@@ -1,4 +1,4 @@
--- The SQL to create your design will go in this file
+-- @author: Yuda, Dai <daiyuda>
 
 -- QUERY 1
 
