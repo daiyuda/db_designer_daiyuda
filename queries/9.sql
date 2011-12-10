@@ -30,19 +30,11 @@ ORDER BY
 	nation,
 	o_year DESC;
 
-EXPLAIN(
-	SELECT
-		nation,
-		o_year,
-		SUM(amount) AS sum_profit
-	FROM
-		mv_9
-	WHERE
-		p_name like '%green%'
-	GROUP BY
-		nation,
-		o_year
-	ORDER BY
-		nation,
-		o_year DESC
-);
+/*
++----+-------------+-------+------+---------------+------+---------+------+--------+----------------------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows   | Extra                                        |
++----+-------------+-------+------+---------------+------+---------+------+--------+----------------------------------------------+
+|  1 | SIMPLE      | mv_9  | ALL  | NULL          | NULL | NULL    | NULL | 327763 | Using where; Using temporary; Using filesort |
++----+-------------+-------+------+---------------+------+---------+------+--------+----------------------------------------------+
+175 rows in set (1.00 sec)
+*/
