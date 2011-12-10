@@ -10,7 +10,6 @@
 18312 rows in set (3.02 sec)
 */
 
-explain(
 SELECT
 	p_brand,
 	p_type,
@@ -38,14 +37,14 @@ ORDER BY
 	supplier_cnt DESC,
 	p_brand,
 	p_type,
-	p_size);
+	p_size;
 
 /*
 +----+--------------------+----------+-----------------+---------------+---------+---------+------+--------+----------------------------------------------+
 | id | select_type        | table    | type            | possible_keys | key     | key_len | ref  | rows   | Extra                                        |
 +----+--------------------+----------+-----------------+---------------+---------+---------+------+--------+----------------------------------------------+
-|  1 | PRIMARY            | mv_16    | ALL             | NULL          | NULL    | NULL    | NULL | 199993 | Using where; Using temporary; Using filesort |
+|  1 | PRIMARY            | mv_16    | ALL             | brand         | NULL    | NULL    | NULL | 199993 | Using where; Using temporary; Using filesort |
 |  2 | DEPENDENT SUBQUERY | supplier | unique_subquery | PRIMARY       | PRIMARY | 4       | func |      1 | Using where                                  |
 +----+--------------------+----------+-----------------+---------------+---------+---------+------+--------+----------------------------------------------+
-18312 rows in set (2.00 sec)
+18312 rows in set (1.91 sec)
 */
