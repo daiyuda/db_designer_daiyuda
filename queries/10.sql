@@ -37,30 +37,11 @@ GROUP BY
 ORDER BY
 	revenue DESC;
 
-EXPLAIN(
-	SELECT
-		c_custkey,
-		c_name,
-		SUM(revenue) AS revenue,
-		c_acctbal,
-		n_name,
-		c_address,
-		c_phone,
-		c_comment
-	FROM
-		mv_10
-	WHERE
-		o_orderdate >= date '1993-10-01'
-		AND o_orderdate < date '1993-10-01' + interval '3' month
-		AND l_returnflag = 'R'
-	GROUP BY
-		c_custkey,
-		c_name,
-		c_acctbal,
-		c_phone,
-		n_name,
-		c_address,
-		c_comment
-	ORDER BY
-		revenue DESC
-);
+/*
++----+-------------+-------+-------+---------------+-----------+---------+------+-------+----------------------------------------------+
+| id | select_type | table | type  | possible_keys | key       | key_len | ref  | rows  | Extra                                        |
++----+-------------+-------+-------+---------------+-----------+---------+------+-------+----------------------------------------------+
+|  1 | SIMPLE      | mv_10 | range | orderdate     | orderdate | 3       | NULL | 48516 | Using where; Using temporary; Using filesort |
++----+-------------+-------+-------+---------------+-----------+---------+------+-------+----------------------------------------------+
+24470 rows in set (2.00 sec)
+*/
