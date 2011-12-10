@@ -15,14 +15,14 @@
 
 SELECT
 	ps_partkey,
-	SUM(value) AS value,
+	SUM(total) AS value,
 FROM
 	mv_11
 WHERE
 	n_name = 'GERMANY'
 GROUP BY
 	ps_partkey HAVING
-		SUM(value) > (
+		SUM(total) > (
 			SELECT
 				SUM(value) * 0.0001000000
 			FROM
