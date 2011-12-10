@@ -339,9 +339,6 @@ CREATE TABLE mv_14
 	WHERE
 		l_partkey = p_partkey;
 
-DROP INDEX shipdate ON mv_14;
-CREATE INDEX shipdate ON mv_14 (l_shipdate);
-
 
 -- QUERY 15
 
