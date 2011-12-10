@@ -35,25 +35,11 @@ ORDER BY
 	cust_nation,
 	l_year;
 
-EXPLAIN(
-	SELECT
-		supp_nation,
-		cust_nation,
-		l_year,
-		SUM(volume) AS revenue
-	FROM 
-		mv_7
-	WHERE
-		((supp_nation = 'FRANCE' and cust_nation = 'GERMANY')
-			OR (supp_nation = 'GERMANY' and cust_nation = 'FRANCE')	
-		)
-		AND l_shipdate between date '1995-01-01' and date '1996-12-31'
-	GROUP BY
-		supp_nation,
-		cust_nation,
-		l_year
-	ORDER BY
-		supp_nation,
-		cust_nation,
-		l_year
-);
+/*
++----+-------------+-------+-------+-------------------------+-------------+---------+------+-------+----------------------------------------------+
+| id | select_type | table | type  | possible_keys           | key         | key_len | ref  | rows  | Extra                                        |
++----+-------------+-------+-------+-------------------------+-------------+---------+------+-------+----------------------------------------------+
+|  1 | SIMPLE      | mv_7  | range | supp_nation,cust_nation | supp_nation | 25      | NULL | 41865 | Using where; Using temporary; Using filesort |
++----+-------------+-------+-------+-------------------------+-------------+---------+------+-------+----------------------------------------------+
+4 rows in set (1.19 sec)
+*/
