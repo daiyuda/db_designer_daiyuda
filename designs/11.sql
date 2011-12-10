@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS mv_11;
 CREATE TABLE mv_11
 	SELECT
 		ps_partkey,
-		SUM(ps_supplycost * ps_availqty) AS total,
+		SUM(ps_supplycost * ps_availqty) AS value,
 		n_name
 	FROM
 		partsupp,
