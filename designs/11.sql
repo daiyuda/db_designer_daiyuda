@@ -15,6 +15,7 @@ CREATE TABLE mv_11
 		ps_suppkey = s_suppkey
 		AND s_nationkey = n_nationkey
 	GROUP BY
+		ps_partkey,
 		n_name;
 
 DROP INDEX name ON mv_11;
