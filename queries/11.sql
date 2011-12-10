@@ -15,20 +15,16 @@
 
 SELECT
 	ps_partkey,
-	SUM(ps_supplycost * ps_availqty) AS value
+	SUM(value) AS value,
 FROM
-	partsupp,
-	supplier,
-	nation
+	mv_11
 WHERE
-	ps_suppkey = s_suppkey
-	AND s_nationkey = n_nationkey
-	AND n_name = 'GERMANY'
+	n_name = 'GERMANY'
 GROUP BY
 	ps_partkey HAVING
-		SUM(ps_supplycost * ps_availqty) > (
+		SUM(value) > (
 			SELECT
-				total
+				SUM(value) * 0.0001000000
 			FROM
 				mv_11
 			WHERE
