@@ -26,20 +26,11 @@ GROUP BY
 ORDER BY
 	numwait DESC,
 	s_name;
-
-
-EXPLAIN(
-	SELECT 
-		s_name,
-		SUM(numwait) AS numwait
-	FROM
-		mv_19
-	WHERE
-		o_orderstatus = 'F'
-		AND n_name = 'SAUDI ARABIA'
-	GROUP BY
-		s_name
-	ORDER BY
-		numwait DESC,
-		s_name
-);
+/*
++----+-------------+-------+------+---------------+------+---------+------+------+-----------------------------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra                                               |
++----+-------------+-------+------+---------------+------+---------+------+------+-----------------------------------------------------+
+|  1 | SIMPLE      | NULL  | NULL | NULL          | NULL | NULL    | NULL | NULL | Impossible WHERE noticed after reading const tables |
++----+-------------+-------+------+---------------+------+---------+------+------+-----------------------------------------------------+
+Empty set (0.00 sec)
+*/
