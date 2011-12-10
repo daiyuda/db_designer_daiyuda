@@ -15,7 +15,7 @@
 
 SELECT
 	ps_partkey,
-	SUM(total) AS value,
+	SUM(total) AS value
 FROM
 	mv_11
 WHERE
