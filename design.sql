@@ -355,9 +355,6 @@ CREATE TABLE mv_15
 		l_shipdate;
 
 
-DROP INDEX shipdate ON mv_15;
-CREATE INDEX shipdate ON mv_15(l_shipdate);
-
 -- QUERY 16
 
 DROP TABLE IF EXISTS mv_16;
