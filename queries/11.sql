@@ -24,7 +24,7 @@ GROUP BY
 	ps_partkey HAVING
 		SUM(total) > (
 			SELECT
-				SUM(value) * 0.0001000000
+				SUM(total) * 0.0001000000
 			FROM
 				mv_11
 			WHERE
